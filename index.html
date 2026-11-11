@@ -3,147 +3,167 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Curse — launcher, mods and documentation</title>
-<style>
-  :root {
-    --bg: #0a0d12;
-    --panel: #11161e;
-    --panel-hover: #181f2a;
-    --text: #e6e8ee;
-    --muted: #8b93a3;
-    --line: #232d3a;
-    --accent: #4ea3ff;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { background: var(--bg); color: var(--text); }
-  body {
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.55;
-  }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  header {
-    background: var(--panel);
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 2;
-  }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-  .nav { display: flex; align-items: center; gap: 26px; height: 56px; }
-  .brand { font-weight: 700; letter-spacing: 0.04em; font-size: 1.1rem; }
-  .brand a { color: var(--text); text-decoration: none; }
-  .nav ul { display: flex; gap: 24px; list-style: none; align-items: center; flex: 1; }
-  .nav a { color: var(--muted); font-size: 0.92rem; }
-  .nav a:hover { color: var(--text); text-decoration: none; }
-  .hero { padding: 48px 20px 64px; text-align: center; }
-  .hero h1 { font-size: 2rem; font-weight: 700; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.01em; }
-  .hero p { color: var(--muted); max-width: 620px; margin: 0 auto 26px; font-size: 1.02rem; }
-  .downloads { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 34px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 20px; border: 1px solid var(--line); border-radius: 8px;
-    background: var(--panel); color: var(--text); font-size: 0.95rem; cursor: pointer;
-  }
-  .btn:hover { border-color: var(--accent); background: var(--panel-hover); text-decoration: none; }
-  .btn--accent { background: var(--accent); color: #04213a; border-color: var(--accent); }
-  .btn--accent:hover { background: var(--accent-hover); }
-  .note { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
-  section { padding: 40px 20px; }
-  section + section { border-top: 1px solid var(--line); }
-  h2 { font-size: 1.25rem; margin-bottom: 16px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
-  .card h3 { font-size: 1rem; margin-bottom: 8px; }
-  .card p { color: var(--muted); font-size: 0.9rem; }
-  footer { background: var(--panel); border-top: 1px solid var(--line); padding: 30px 20px 40px; }
-  .foot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; color: var(--muted); font-size: 0.88rem; }
-  .foot-grid a { color: var(--muted); }
-  .foot-grid a:hover { color: var(--text); text-decoration: none; }
-  .foot-grid h4 { color: var(--text); font-size: 0.9rem; margin-bottom: 10px; }
-  .foot-grid ul { list-style: none; }
-  .foot-grid li { margin-bottom: 6px; }
-  .draft-badge {
-    display: inline-block; border: 1px solid #3a4556; border-radius: 6px; padding: 2px 8px;
-    font-size: 0.78rem; color: #8b93a3; background: #0f141b; margin-left: 8px;
-  }
-  @media (max-width: 600px) {
-    .nav ul { gap: 16px; font-size: 0.85rem; }
-    .hero h1 { font-size: 1.55rem; }
-  }
-</style>
+<title>Curse: Minecraft Java Edition 26.3 in Rust</title>
+<meta name="description" content="A native client and server for Minecraft: Java Edition 26.3. Download the launcher, read the documentation, host a server.">
+<link rel="canonical" href="https://curse-rusts.github.io/">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<meta property="og:title" content="Curse: Minecraft Java Edition 26.3 in Rust">
+<meta property="og:description" content="A native client and server for Minecraft: Java Edition 26.3. Download the launcher, read the documentation, host a server.">
+<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
+<meta property="og:type" content="website">
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <div class="brand"><a href="/">Curse</a></div>
-    <ul>
-      <li><a href="#download">Download launcher</a></li>
-      <li><a href="/mods.html">Mods</a></li>
-      <li><a href="/docs.html">Documentation</a></li>
-    </ul>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
+    <nav>
+      <a href="/download.html">Download</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/mods.html">Mods</a>
+      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
+    </nav>
   </div>
 </header>
-
-<main class="wrap">
-  <div class="hero">
-    <h1>Curse</h1>
-    <p>Official launcher for Curse, the Minecraft Java 26.3 client. Download, documentation and mods in one place.</p>
-    <div class="downloads">
-      <a class="btn btn--accent" href="https://github.com/curse-rusts/downloads/releases/latest">Windows</a>
-      <a class="btn" href="https://github.com/curse-rusts/downloads/releases/latest">Linux</a>
+<section class="hero">
+  <img class="hero-img" src="/assets/shots/valley.webp" alt="A river valley with a village, savanna hills and a cherry grove seen from above">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="tag">Minecraft: Java Edition 26.3</p>
+      <h1>Java Edition,<br>without Java.</h1>
+      <p class="lead">Curse is a native client and server for Minecraft: Java Edition 26.3. Your worlds, your account, the same rules, in one Rust binary.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/curse-rusts/downloads/releases/latest">Download the launcher</a>
+        <a class="btn" href="/download.html">Files and requirements</a>
+      </div>
+      <p class="fine">Windows, Linux and macOS. You need a Microsoft account that owns Minecraft: Java Edition.</p>
     </div>
-    <p class="note">The first builds have not been published yet. The link above will work after the first release.</p>
   </div>
+</section>
 
-  <section id="download">
-    <h2>Download launcher</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Windows</h3>
-        <p>Installer from the Curse releases page. The launcher updates itself after installation.</p>
-        <a class="btn" href="https://github.com/curse-rusts/downloads/releases/latest">Go to releases</a>
-      </div>
-      <div class="card">
-        <h3>Linux</h3>
-        <p>Archive from the Curse releases page. Extract to any folder and run the launcher binary.</p>
-        <a class="btn" href="https://github.com/curse-rusts/downloads/releases/latest">Go to releases</a>
+<section class="band">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="tag">The game</p>
+      <h2>Survival, creative, redstone, commands.</h2>
+      <p>The client is the game: world generation in all three dimensions, mobs, villagers, raids, redstone, every command, the HUD and the recipe book. Resource packs, data packs and shader packs load as they do in the Java game.</p>
+      <ul class="list">
+        <li><strong>Worlds.</strong> Vanilla saves open as they are. Worlds from 1.8 to 26.2 are upgraded on the way in.</li>
+        <li><strong>Multiplayer.</strong> Join vanilla and Curse servers in online mode, open a world to LAN, or invite friends from the launcher.</li>
+        <li><strong>No Java.</strong> The renderer, the server and the tools are native code. There is no JVM to install and no Java process to keep alive.</li>
+      </ul>
+    </div>
+    <figure class="shot">
+      <img src="/assets/shots/survival.webp" alt="Survival in a village square: two villagers, flowers, the hotbar and the health bar">
+      <figcaption>Survival, village square</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap split reverse">
+    <div class="copy">
+      <p class="tag">The server</p>
+      <h2>One program to host.</h2>
+      <p><code>curse-server</code> supervises the game's engine in server mode: a CLI, a full-screen console, a web panel and a control API, with no Java and no Python on the machine. The world format, the protocol and the rules are the client's own.</p>
+      <ul class="list">
+        <li><strong>Ticks.</strong> 20 ticks a second on one thread; chunk generation and lighting run on a worker pool.</li>
+        <li><strong>Config.</strong> Vanilla's <code>server.properties</code> and <code>eula.txt</code>, plus one <code>server.toml</code> for the supervisor.</li>
+        <li><strong>Operations.</strong> Backups, updates and crash restarts are the supervisor's job, not a script's.</li>
+      </ul>
+    </div>
+    <figure class="shot">
+      <img src="/assets/shots/nether.webp" alt="A crimson forest in the Nether with a piglin among the fungi">
+      <figcaption>The Nether, crimson forest</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="copy" style="max-width:760px">
+      <p class="tag">The launcher</p>
+      <h2>One file, then the game.</h2>
+      <p>A player downloads the launcher and nothing else. It signs in with Microsoft, finds an existing Minecraft installation or downloads 26.3 from Mojang, prepares the resources the game reads, and keeps the client current. Servers and native mods are built from the same launcher.</p>
+    </div>
+    <div class="note">
+      <p>The launcher is the only download a player needs. The game, its resources and the server archives are fetched and prepared for the account that signed in.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="tag">Status</p>
+    <h2>What is on, and what is not.</h2>
+    <p class="copy" style="max-width:66ch">The client, the server and the launcher work. A few services are deliberately off in this build: their addresses are empty, so the game contacts nothing. Nothing below is a promise with a date.</p>
+    <table class="table">
+      <thead><tr><th>Service</th><th>State</th><th>What that means</th></tr></thead>
+      <tbody>
+        <tr><td>Official server</td><td><span class="state">Off</span></td><td>No server is offered in the list.</td></tr>
+        <tr><td>Telemetry</td><td><span class="state">Off</span></td><td>No endpoint, so nothing is sent.</td></tr>
+        <tr><td>Cosmetics and emotes</td><td><span class="state">Off</span></td><td>No service is asked; no items are drawn.</td></tr>
+        <tr><td>Shop</td><td><span class="state">Off</span></td><td>No checkout page exists.</td></tr>
+        <tr><td>Public mod registry</td><td><span class="state">Off</span></td><td>Mods installed by hand work; the browser lists nothing.</td></tr>
+        <tr><td>The game itself</td><td><span class="state on">On</span></td><td>Client, dedicated server, launcher, LAN and online play.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="tag">Parity</p>
+      <h2>Measured against the Java game.</h2>
+      <p>The differential harnesses run vanilla 26.3 and Curse on the same scene, the same seed and the same ticks, then compare what a player can observe: positions, motion, AI state, sounds, packets and rendered output. A harness passes only when every compared value matches.</p>
+      <p>The project's port ledger reads every vanilla 26.3 method against Curse's code. Player-visible gaps open today: 0 of 833. The audit and what players still run into are in the repository's status section.</p>
+    </div>
+    <figure class="shot">
+      <img src="/assets/shots/sunset.webp" alt="Sunset behind a cherry grove on a hill, with a river below">
+      <figcaption>Cherry grove at sunset</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band tight">
+  <div class="wrap">
+    <div class="copy" style="max-width:760px">
+      <p class="tag">Download</p>
+      <h2>Start with the launcher.</h2>
+      <p>Windows, Linux and macOS. The releases page holds the launcher and, for hosts, the server archive. The first public builds are being prepared; the page lists what is published.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/curse-rusts/downloads/releases/latest">Open releases</a>
+        <a class="btn" href="/download.html">Requirements</a>
       </div>
     </div>
-  </section>
-
-  <section id="mods">
-    <h2>Mods</h2>
-    <p>The mod registry is not deployed yet. When it is, you will be able to browse mods, install them and publish your own projects here.</p>
-  </section>
-
-  <section id="docs">
-    <h2>Documentation</h2>
-    <p>Installation, mods, telemetry and the mod registry API: <a href="/docs.html">Curse documentation</a>.</p>
-  </section>
-</main>
-
+  </div>
+</section>
 <footer>
-  <div class="wrap foot-grid">
-    <div>
-      <h4>Product</h4>
-      <ul>
-        <li><a href="#download">Download launcher</a></li>
-        <li><a href="/mods.html">Mods</a></li>
-      </ul>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Curse</h4>
+        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/docs.html">Documentation</a></li>
+          <li><a href="/mods.html">Mods</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h4>Documentation</h4>
-      <ul>
-        <li><a href="/docs.html">All articles</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Legal</h4>
-      <ul>
-        <li>Legal documents are being prepared.</li>
-      </ul>
-    </div>
+    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
   </div>
 </footer>
 </body>

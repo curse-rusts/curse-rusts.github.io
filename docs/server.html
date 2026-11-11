@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Host a Curse server</title>
+<meta name="description" content="The server archive, the first run, server.toml, server.properties, ports and backups.">
+<link rel="canonical" href="https://curse-rusts.github.io/">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<meta property="og:title" content="Host a Curse server">
+<meta property="og:description" content="The server archive, the first run, server.toml, server.properties, ports and backups.">
+<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
+<meta property="og:type" content="website">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
+    <nav>
+      <a href="/download.html">Download</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/mods.html">Mods</a>
+      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap doc">
+  <p class="crumbs"><a href="/">Curse</a> / <a href="/docs.html">Documentation</a> / Server</p>
+  <h1>Host a server</h1>
+  <p class="lead">The server archive runs the same engine as the client, headless, with a supervisor around it.</p>
+
+  <h2>The archive</h2>
+  <p><code>curse-server-linux-x86_64.tar.gz</code> holds the supervisor (<code>curse-server</code>), the engine (<code>curse-engine</code>) and the preparer (<code>curse-prepare</code>). Extract it into the folder the server will live in. The README inside the archive has the exact first-run commands for that build.</p>
+
+  <h2>First run</h2>
+  <p>Run <code>./curse-server</code> in the folder. The supervisor writes its <code>server.toml</code>, asks the engine for vanilla's <code>server.properties</code> defaults, and refuses to start until <code>eula.txt</code> says <code>eula=true</code>, exactly as the Java server does. The console, the web panel and the control API are the supervisor's; the game's own commands reach the engine's dispatcher as the server.</p>
+
+  <h2>Configuration</h2>
+  <p>Two files, two jobs. <code>server.properties</code> is vanilla's: port, MOTD, online mode, whitelist, view and simulation distance, player limit. <code>server.toml</code> is the supervisor's: where the engine lives, backups, updates, the panel and the control API. The generated reference in the source repository lists every key; the archive's README has the common ones.</p>
+
+  <h2>Ports</h2>
+  <p>The game listens on <code>25565</code> by default. The control API and the web panel listen on loopback only and are not exposed to the internet unless the owner asks for it. Open the game port in the firewall; leave the panel closed.</p>
+
+  <h2>Backups and updates</h2>
+  <p>The supervisor takes backups on its own schedule, keeps the last ones, restarts the engine after a crash and updates the archive when a new build is published. A world is never updated in place without a backup first.</p>
+
+  <h2>Players</h2>
+  <p>Online mode is on by default: players join with their Microsoft account. Whitelist, operators, bans and IP bans use vanilla's files and vanilla's commands. The console accepts <code>stop</code>, <code>save-all</code>, <code>list</code>, <code>op</code>, <code>whitelist</code>, <code>ban</code>, <code>kick</code> and <code>say</code>; everything else goes to the game's command dispatcher.</p>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Curse</h4>
+        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/docs.html">Documentation</a></li>
+          <li><a href="/mods.html">Mods</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
+  </div>
+</footer>
+</body>
+</html>

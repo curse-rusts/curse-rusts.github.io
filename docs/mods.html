@@ -3,58 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mods — Documentation — Curse</title>
-<style>
-  :root { --bg: #0a0d12; --panel: #11161e; --line: #232d3a; --text: #e6e8ee; --muted: #8b93a3; --accent: #4ea3ff; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { background: var(--bg); color: var(--text); }
-  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  header { background: var(--panel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 2; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-  .nav { display: flex; align-items: center; gap: 26px; height: 56px; }
-  .brand { font-weight: 700; letter-spacing: 0.04em; font-size: 1.1rem; }
-  .brand a { color: var(--text); text-decoration: none; }
-  .nav ul { display: flex; gap: 24px; list-style: none; align-items: center; flex: 1; }
-  .nav a { color: var(--muted); font-size: 0.92rem; }
-  .page { padding: 24px 20px 60px; }
-  h1 { font-size: 1.5rem; margin-bottom: 10px; }
-  .lead { color: var(--muted); margin-bottom: 26px; font-size: 0.96rem; }
-  h2 { font-size: 1.15rem; margin: 22px 0 8px; }
-  p { margin-bottom: 12px; color: var(--text); }
-  code { background: #0f141b; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-  ol { margin: 4px 0 12px 22px; }
-  li { margin-bottom: 6px; color: var(--text); }
-  .back { color: var(--muted); font-size: 0.9rem; display: inline-block; margin-top: 26px; }
-  .back:hover { color: var(--text); text-decoration: underline; }
-</style>
+<title>Mods in Curse</title>
+<meta name="description" content="Content mods, native mods and the public registry that is not deployed.">
+<link rel="canonical" href="https://curse-rusts.github.io/">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<meta property="og:title" content="Mods in Curse">
+<meta property="og:description" content="Content mods, native mods and the public registry that is not deployed.">
+<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
+<meta property="og:type" content="website">
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <div class="brand"><a href="/">Curse</a></div>
-    <ul>
-      <li><a href="/docs.html">Documentation</a></li>
-      <li><a href="/">Home</a></li>
-    </ul>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
+    <nav>
+      <a href="/download.html">Download</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/mods.html">Mods</a>
+      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
+    </nav>
   </div>
 </header>
-
-<main class="wrap page">
+<main class="wrap doc">
+  <p class="crumbs"><a href="/">Curse</a> / <a href="/docs.html">Documentation</a> / Mods</p>
   <h1>Mods</h1>
-  <p class="lead">Browse mods, install them, and publish your own projects.</p>
+  <p class="lead">Two kinds of mod run in Curse: data and assets, or native Rust code. Both are off by default.</p>
 
-  <p><strong>The mod registry is not deployed yet.</strong> When it is, you will be able to install mods from the launcher and submit your own projects through the website form.</p>
+  <h2>Content mods</h2>
+  <p>A content mod is a <code>.hmod</code> file: blocks, items, recipes, loot, tags, models, textures, structures. It carries no code. Put it in the game folder's <code>curse-mods/</code> directory, or open Options, Mods, Browse Mods. A fresh install has no such folder and plays exactly like vanilla.</p>
 
-  <h2>Planned</h2>
-  <ol>
-    <li>Open the Mods tab in the launcher.</li>
-    <li>Find a mod in the catalog and click Install.</li>
-    <li>The mod appears in your selected game instance.</li>
-  </ol>
+  <h2>Native mods</h2>
+  <p>A native mod is a <code>.cmod</code> bundle: Rust that changes the game's own source before it is compiled. The launcher builds it for the installed version and keeps the result in <code>curse-native-mods/</code>. An older <code>.hnmod</code> bundle still loads and is removed when the launcher replaces it.</p>
 
-  <p class="back">&larr; Back to documentation</p>
+  <h2>The registry</h2>
+  <p>The public mod registry is not deployed. The game and the launcher have no index address, so the Mods page lists nothing and the in-game browser asks nothing. Mods installed by hand work today; the registry becomes available when it has an address, not before.</p>
+
+  <h2>What a mod may do</h2>
+  <p>Each mod declares its capabilities in its manifest: add blocks, items, mob effects or entity types to your worlds, read and write its own storage, or run native code. Options, Mods lists them with what each may do and a switch. A switch applies at once for assets and data; a mod that adds blocks or changes world generation loads on the next start, and the page says so.</p>
 </main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Curse</h4>
+        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/docs.html">Documentation</a></li>
+          <li><a href="/mods.html">Mods</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
+  </div>
+</footer>
 </body>
 </html>

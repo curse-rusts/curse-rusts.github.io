@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download Curse</title>
+<meta name="description" content="Download the Curse launcher for Windows, Linux and macOS, and verify the release checksums.">
+<link rel="canonical" href="https://curse-rusts.github.io/">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<meta property="og:title" content="Download Curse">
+<meta property="og:description" content="Download the Curse launcher for Windows, Linux and macOS, and verify the release checksums.">
+<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
+<meta property="og:type" content="website">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
+    <nav>
+      <a href="/download.html">Download</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/mods.html">Mods</a>
+      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap doc">
+  <p class="crumbs"><a href="/">Curse</a> / Download</p>
+  <h1>Download Curse</h1>
+  <p class="lead">The launcher installs, prepares and updates the game. It is the only file a player needs; the client and its resources come after sign-in.</p>
+
+  <h2>Launcher</h2>
+  <table class="table">
+    <thead><tr><th>Platform</th><th>File</th><th>Needs</th></tr></thead>
+    <tbody>
+      <tr><td>Windows x64</td><td class="file">curse-launcher-setup.exe</td><td>Windows 10 or 11; a GPU with Vulkan or DirectX 12</td></tr>
+      <tr><td>Windows on Arm</td><td class="file">curse-launcher-setup-arm64.exe</td><td>Windows 11 on Arm</td></tr>
+      <tr><td>macOS, Apple Silicon</td><td class="file">curse-launcher-macos-arm64.dmg</td><td>macOS 12 or later</td></tr>
+      <tr><td>macOS, Intel</td><td class="file">curse-launcher-macos-x64.dmg</td><td>macOS 12 or later</td></tr>
+      <tr><td>Linux x86-64</td><td class="file">curse-launcher-linux-x86_64.AppImage or .tar.gz</td><td>glibc, X11 or Wayland, Vulkan or OpenGL 3.3</td></tr>
+    </tbody>
+  </table>
+  <div class="actions" style="margin-top:28px">
+    <a class="btn primary" href="https://github.com/curse-rusts/downloads/releases/latest">Open the releases page</a>
+  </div>
+  <p class="fine">Builds are published in <a href="https://github.com/curse-rusts/downloads">curse-rusts/downloads</a>. The first public builds are being prepared; if the page is empty, nothing has been published yet.</p>
+
+  <h2>Before you start</h2>
+  <p>You need a Microsoft account that owns Minecraft: Java Edition. Curse plays only with an account that owns the game, and it ships no Minecraft code or assets. When an official or third-party installation is already on the machine, the launcher reuses it; otherwise it downloads 26.3 from Mojang for that account.</p>
+
+  <h2>Verify a download</h2>
+  <p>Every release carries <code>SHA256SUMS</code> and its signature. Compare the file you downloaded with the checksum from the same release:</p>
+  <pre><code>sha256sum curse-launcher-linux-x86_64.tar.gz</code></pre>
+  <p>On macOS use <code>shasum -a 256</code>. A file whose hash differs from the release's is not the file that was published.</p>
+
+  <h2>Server</h2>
+  <p>Hosts take the server archive from the same releases page. It contains the supervisor, the engine and the preparer; the archive's README has the first run, the ports and the configuration keys.</p>
+
+  <h2>Next</h2>
+  <div class="index-list">
+    <a href="/docs/install.html"><span class="name">Install and first launch</span><span class="desc">Sign in, prepare the resources, start the game.</span></a>
+    <a href="/docs/server.html"><span class="name">Host a server</span><span class="desc">The archive, the first run, the config and the ports.</span></a>
+    <a href="/docs/mods.html"><span class="name">Mods</span><span class="desc">Content mods, native mods and the registry that is off.</span></a>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Curse</h4>
+        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/docs.html">Documentation</a></li>
+          <li><a href="/mods.html">Mods</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
+  </div>
+</footer>
+</body>
+</html>

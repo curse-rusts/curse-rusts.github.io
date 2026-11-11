@@ -3,72 +3,68 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Documentation — Curse</title>
-<style>
-  :root { --bg: #0a0d12; --panel: #11161e; --line: #232d3a; --text: #e6e8ee; --muted: #8b93a3; --accent: #4ea3ff; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { background: var(--bg); color: var(--text); }
-  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  header { background: var(--panel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 2; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-  .nav { display: flex; align-items: center; gap: 26px; height: 56px; }
-  .brand { font-weight: 700; letter-spacing: 0.04em; font-size: 1.1rem; }
-  .brand a { color: var(--text); text-decoration: none; }
-  .nav ul { display: flex; gap: 24px; list-style: none; align-items: center; flex: 1; }
-  .nav a { color: var(--muted); font-size: 0.92rem; }
-  .nav a:hover { color: var(--text); text-decoration: none; }
-  .page { padding: 32px 20px 60px; }
-  h1 { font-size: 1.6rem; margin-bottom: 8px; }
-  .lead { color: var(--muted); margin-bottom: 28px; font-size: 0.98rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
-  .card h3 { font-size: 1.05rem; margin-bottom: 10px; }
-  .card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 12px; }
-  .card a { color: var(--accent); }
-  .back { color: var(--muted); font-size: 0.9rem; margin-top: 24px; display: inline-block; }
-  .back:hover { color: var(--text); text-decoration: underline; }
-</style>
+<title>Curse documentation</title>
+<meta name="description" content="Install, host a server, install mods and read what the client sends.">
+<link rel="canonical" href="https://curse-rusts.github.io/">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<meta property="og:title" content="Curse documentation">
+<meta property="og:description" content="Install, host a server, install mods and read what the client sends.">
+<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
+<meta property="og:type" content="website">
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <div class="brand"><a href="/">Curse</a></div>
-    <ul>
-      <li><a href="/">Home</a></li>
-    </ul>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
+    <nav>
+      <a href="/download.html">Download</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/mods.html">Mods</a>
+      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
+    </nav>
   </div>
 </header>
-
-<main class="wrap page">
+<main class="wrap doc">
+  <p class="crumbs"><a href="/">Curse</a> / Documentation</p>
   <h1>Documentation</h1>
-  <p class="lead">Installation, mods, telemetry and the mod registry API.</p>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Installing the launcher</h3>
-      <p>How to download and install the launcher on Windows and Linux, and how it updates itself.</p>
-      <a href="/docs/install.html">Read &rarr;</a>
-    </div>
-    <div class="card">
-      <h3>Mods</h3>
-      <p>The mod registry and how mods work once it is deployed.</p>
-      <a href="/docs/mods.html">Read &rarr;</a>
-    </div>
-    <div class="card">
-      <h3>Telemetry</h3>
-      <p>What telemetry sends, and that it is currently disabled.</p>
-      <a href="/docs/telemetry.html">Read &rarr;</a>
-    </div>
-    <div class="card">
-      <h3>Mod registry API</h3>
-      <p>Placeholder for the <code>curse-rusts.github.io/api/mods/*</code> endpoints.</p>
-      <a href="/docs/api.html">Read &rarr;</a>
-    </div>
+  <p class="lead">The player-facing part of the project: install the game, host a server, install mods, and know what the client sends.</p>
+  <div class="index-list">
+    <a href="/docs/install.html"><span class="name">Install and first launch</span><span class="desc">The launcher, the Microsoft account, the resources and the first world.</span></a>
+    <a href="/docs/server.html"><span class="name">Host a server</span><span class="desc">The server archive, the first run, server.toml and server.properties, ports and backups.</span></a>
+    <a href="/docs/mods.html"><span class="name">Mods</span><span class="desc">Content mods and native Rust mods, where they go and what the launcher builds.</span></a>
+    <a href="/docs/telemetry.html"><span class="name">Telemetry</span><span class="desc">What the client sends, and why the answer today is nothing.</span></a>
   </div>
-
-  <p class="back">&larr; Home</p>
+  <div class="note">
+    <p>The design notes, the protocol reference and the parity harnesses live in the private source repository. This site documents what a player or a host does, not how the engine is built.</p>
+  </div>
 </main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Curse</h4>
+        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/docs.html">Documentation</a></li>
+          <li><a href="/mods.html">Mods</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
+  </div>
+</footer>
 </body>
 </html>

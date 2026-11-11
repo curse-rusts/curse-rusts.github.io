@@ -3,51 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Telemetry — Documentation — Curse</title>
-<style>
-  :root { --bg: #0a0d12; --panel: #11161e; --line: #232d3a; --text: #e6e8ee; --muted: #8b93a3; --accent: #4ea3ff; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { background: var(--bg); color: var(--text); }
-  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  header { background: var(--panel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 2; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-  .nav { display: flex; align-items: center; gap: 26px; height: 56px; }
-  .brand { font-weight: 700; letter-spacing: 0.04em; font-size: 1.1rem; }
-  .brand a { color: var(--text); text-decoration: none; }
-  .nav ul { display: flex; gap: 24px; list-style: none; align-items: center; flex: 1; }
-  .nav a { color: var(--muted); font-size: 0.92rem; }
-  .page { padding: 24px 20px 60px; }
-  h1 { font-size: 1.5rem; margin-bottom: 10px; }
-  .lead { color: var(--muted); margin-bottom: 26px; font-size: 0.96rem; }
-  h2 { font-size: 1.15rem; margin: 22px 0 8px; }
-  p { margin-bottom: 12px; color: var(--text); }
-  .back { color: var(--muted); font-size: 0.9rem; display: inline-block; margin-top: 26px; }
-  .back:hover { color: var(--text); text-decoration: underline; }
-</style>
+<title>Telemetry</title>
+<meta name="description" content="Curse sends nothing: the build has no telemetry endpoint.">
+<link rel="canonical" href="https://curse-rusts.github.io/">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<meta property="og:title" content="Telemetry">
+<meta property="og:description" content="Curse sends nothing: the build has no telemetry endpoint.">
+<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
+<meta property="og:type" content="website">
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <div class="brand"><a href="/">Curse</a></div>
-    <ul>
-      <li><a href="/docs.html">Documentation</a></li>
-      <li><a href="/">Home</a></li>
-    </ul>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
+    <nav>
+      <a href="/download.html">Download</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/mods.html">Mods</a>
+      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
+    </nav>
   </div>
 </header>
-
-<main class="wrap page">
+<main class="wrap doc">
+  <p class="crumbs"><a href="/">Curse</a> / <a href="/docs.html">Documentation</a> / Telemetry</p>
   <h1>Telemetry</h1>
-  <p class="lead">What telemetry sends, how long it is kept — and that it is currently disabled.</p>
+  <p class="lead">Curse sends nothing. The client has no telemetry endpoint, so there is nowhere for data to go.</p>
 
-  <h2>Telemetry is disabled</h2>
-  <p>The Curse launcher does not send any telemetry right now. Nothing is collected, nothing is stored, and nothing is sent to any server.</p>
+  <h2>What is sent</h2>
+  <p>Nothing. The build has an empty telemetry address, which turns the whole feature off: no performance summary, no launch count, no "I'm playing" ping. The settings that would control those items are present, because the client is the same one that will use them when a service exists, but with no endpoint they never leave the machine.</p>
 
-  <p>When telemetry is enabled in the future, the privacy page will explain what is sent and how long it is kept. Until then, there is no data collection to describe.</p>
+  <h2>What would be sent</h2>
+  <p>If an endpoint is configured, the client sends only what the settings allow: performance summaries, crash reports that the player chose to send, and the heartbeat that counts players. It never sends account names, UUIDs, world names, chat, server addresses or file paths. The full schema lives in the source repository's telemetry document.</p>
 
-  <p class="back">&larr; Back to documentation</p>
+  <h2>A local endpoint</h2>
+  <p>For development, <code>CURSE_TELEMETRY_URL</code> names an endpoint; <code>CURSE_TELEMETRY_URL=off</code> turns sending off even when one is set. Tests and automated runs set <code>off</code>.</p>
+
+  <h2>Why this page exists</h2>
+  <p>Because a page that says nothing is easier to trust than a page that describes a service that is not there. When Curse has a telemetry service, this page will name it, the data it keeps and the way to delete it.</p>
 </main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Curse</h4>
+        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/docs.html">Documentation</a></li>
+          <li><a href="/mods.html">Mods</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
+  </div>
+</footer>
 </body>
 </html>
