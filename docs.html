@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation — Curse</title>
+<style>
+  :root { --bg: #0a0d12; --panel: #11161e; --line: #232d3a; --text: #e6e8ee; --muted: #8b93a3; --accent: #4ea3ff; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); color: var(--text); }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { background: var(--panel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 2; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  .nav { display: flex; align-items: center; gap: 26px; height: 56px; }
+  .brand { font-weight: 700; letter-spacing: 0.04em; font-size: 1.1rem; }
+  .brand a { color: var(--text); text-decoration: none; }
+  .nav ul { display: flex; gap: 24px; list-style: none; align-items: center; flex: 1; }
+  .nav a { color: var(--muted); font-size: 0.92rem; }
+  .nav a:hover { color: var(--text); text-decoration: none; }
+  .page { padding: 32px 20px 60px; }
+  h1 { font-size: 1.6rem; margin-bottom: 8px; }
+  .lead { color: var(--muted); margin-bottom: 28px; font-size: 0.98rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+  .card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 12px; }
+  .card a { color: var(--accent); }
+  .back { color: var(--muted); font-size: 0.9rem; margin-top: 24px; display: inline-block; }
+  .back:hover { color: var(--text); text-decoration: underline; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><a href="/">Curse</a></div>
+    <ul>
+      <li><a href="/">Home</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap page">
+  <h1>Documentation</h1>
+  <p class="lead">Installation, mods, telemetry and the mod registry API.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Installing the launcher</h3>
+      <p>How to download and install the launcher on Windows and Linux, and how it updates itself.</p>
+      <a href="/docs/install.html">Read &rarr;</a>
+    </div>
+    <div class="card">
+      <h3>Mods</h3>
+      <p>The mod registry and how mods work once it is deployed.</p>
+      <a href="/docs/mods.html">Read &rarr;</a>
+    </div>
+    <div class="card">
+      <h3>Telemetry</h3>
+      <p>What telemetry sends, and that it is currently disabled.</p>
+      <a href="/docs/telemetry.html">Read &rarr;</a>
+    </div>
+    <div class="card">
+      <h3>Mod registry API</h3>
+      <p>Placeholder for the <code>curse-rusts.github.io/api/mods/*</code> endpoints.</p>
+      <a href="/docs/api.html">Read &rarr;</a>
+    </div>
+  </div>
+
+  <p class="back">&larr; Home</p>
+</main>
+</body>
+</html>

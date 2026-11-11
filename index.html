@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curse — launcher, mods and documentation</title>
+<style>
+  :root {
+    --bg: #0a0d12;
+    --panel: #11161e;
+    --panel-hover: #181f2a;
+    --text: #e6e8ee;
+    --muted: #8b93a3;
+    --line: #232d3a;
+    --accent: #4ea3ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); color: var(--text); }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  .nav { display: flex; align-items: center; gap: 26px; height: 56px; }
+  .brand { font-weight: 700; letter-spacing: 0.04em; font-size: 1.1rem; }
+  .brand a { color: var(--text); text-decoration: none; }
+  .nav ul { display: flex; gap: 24px; list-style: none; align-items: center; flex: 1; }
+  .nav a { color: var(--muted); font-size: 0.92rem; }
+  .nav a:hover { color: var(--text); text-decoration: none; }
+  .hero { padding: 48px 20px 64px; text-align: center; }
+  .hero h1 { font-size: 2rem; font-weight: 700; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.01em; }
+  .hero p { color: var(--muted); max-width: 620px; margin: 0 auto 26px; font-size: 1.02rem; }
+  .downloads { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--panel); color: var(--text); font-size: 0.95rem; cursor: pointer;
+  }
+  .btn:hover { border-color: var(--accent); background: var(--panel-hover); text-decoration: none; }
+  .btn--accent { background: var(--accent); color: #04213a; border-color: var(--accent); }
+  .btn--accent:hover { background: var(--accent-hover); }
+  .note { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  section { padding: 40px 20px; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 { font-size: 1.25rem; margin-bottom: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+  .card h3 { font-size: 1rem; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 0.9rem; }
+  footer { background: var(--panel); border-top: 1px solid var(--line); padding: 30px 20px 40px; }
+  .foot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; color: var(--muted); font-size: 0.88rem; }
+  .foot-grid a { color: var(--muted); }
+  .foot-grid a:hover { color: var(--text); text-decoration: none; }
+  .foot-grid h4 { color: var(--text); font-size: 0.9rem; margin-bottom: 10px; }
+  .foot-grid ul { list-style: none; }
+  .foot-grid li { margin-bottom: 6px; }
+  .draft-badge {
+    display: inline-block; border: 1px solid #3a4556; border-radius: 6px; padding: 2px 8px;
+    font-size: 0.78rem; color: #8b93a3; background: #0f141b; margin-left: 8px;
+  }
+  @media (max-width: 600px) {
+    .nav ul { gap: 16px; font-size: 0.85rem; }
+    .hero h1 { font-size: 1.55rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><a href="/">Curse</a></div>
+    <ul>
+      <li><a href="#download">Download launcher</a></li>
+      <li><a href="/mods.html">Mods</a></li>
+      <li><a href="/docs.html">Documentation</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Curse</h1>
+    <p>Official launcher for Curse, the Minecraft Java 26.3 client. Download, documentation and mods in one place.</p>
+    <div class="downloads">
+      <a class="btn btn--accent" href="https://github.com/curse-rusts/downloads/releases/latest">Windows</a>
+      <a class="btn" href="https://github.com/curse-rusts/downloads/releases/latest">Linux</a>
+    </div>
+    <p class="note">The first builds have not been published yet. The link above will work after the first release.</p>
+  </div>
+
+  <section id="download">
+    <h2>Download launcher</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Windows</h3>
+        <p>Installer from the Curse releases page. The launcher updates itself after installation.</p>
+        <a class="btn" href="https://github.com/curse-rusts/downloads/releases/latest">Go to releases</a>
+      </div>
+      <div class="card">
+        <h3>Linux</h3>
+        <p>Archive from the Curse releases page. Extract to any folder and run the launcher binary.</p>
+        <a class="btn" href="https://github.com/curse-rusts/downloads/releases/latest">Go to releases</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="mods">
+    <h2>Mods</h2>
+    <p>The mod registry is not deployed yet. When it is, you will be able to browse mods, install them and publish your own projects here.</p>
+  </section>
+
+  <section id="docs">
+    <h2>Documentation</h2>
+    <p>Installation, mods, telemetry and the mod registry API: <a href="/docs.html">Curse documentation</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#download">Download launcher</a></li>
+        <li><a href="/mods.html">Mods</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Documentation</h4>
+      <ul>
+        <li><a href="/docs.html">All articles</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li>Legal documents are being prepared.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
