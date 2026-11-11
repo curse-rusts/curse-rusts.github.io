@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Host a Curse server</title>
 <meta name="description" content="The server archive, the first run, server.toml, server.properties, ports and backups.">
-<link rel="canonical" href="https://curse-rusts.github.io/">
+<link rel="canonical" href="https://curse-rusts.github.io/docs/server.html">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/site.css">
 <meta property="og:title" content="Host a Curse server">
@@ -43,7 +43,7 @@
   <p>The game listens on <code>25565</code> by default. The control API and the web panel listen on loopback only and are not exposed to the internet unless the owner asks for it. Open the game port in the firewall; leave the panel closed.</p>
 
   <h2>Backups and updates</h2>
-  <p>The supervisor takes backups on its own schedule, keeps the last ones, restarts the engine after a crash and updates the archive when a new build is published. A world is never updated in place without a backup first.</p>
+  <p>The supervisor takes backups on its own schedule, keeps the last ones, and restarts the engine after a crash. A new build is applied only when the owner runs `curse-server update` (or clicks Update in the panel) — never by itself — and always with a backup first.</p>
 
   <h2>Players</h2>
   <p>Online mode is on by default: players join with their Microsoft account. Whitelist, operators, bans and IP bans use vanilla's files and vanilla's commands. The console accepts <code>stop</code>, <code>save-all</code>, <code>list</code>, <code>op</code>, <code>whitelist</code>, <code>ban</code>, <code>kick</code> and <code>say</code>; everything else goes to the game's command dispatcher.</p>
