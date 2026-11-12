@@ -37,7 +37,8 @@
   <p>A native mod is a <code>.cmod</code> bundle: Rust that changes the game's own source before it is compiled. The launcher builds it for the installed version and keeps the result in <code>curse-native-mods/</code>. An older <code>.hnmod</code> bundle still loads and is removed when the launcher replaces it.</p>
 
   <h2>The registry</h2>
-  <p>The public mod registry is not deployed. The game and the launcher have no index address, so the Mods page lists nothing and the in-game browser asks nothing. Mods installed by hand work today; the registry becomes available when it has an address, not before.</p>
+  <p>Curse has no registry of its own yet. The <a href="https://playhorizon.dev/mods">Horizon catalog</a> lists the mods made for this codebase: content mods (blocks, items, recipes, textures, sounds) work as they are; native mods are built into the game, so they need the build they were made for.</p>
+  <p>A content mod from that catalog installs by hand: download its <code>.hmod</code> file and put it in the game folder's <code>curse-mods/</code>. Native mods are not installed that way; ask their authors for a build for this version.</p>
 
   <h2>What a mod may do</h2>
   <p>Each mod declares its capabilities in its manifest: add blocks, items, mob effects or entity types to your worlds, read and write its own storage, or run native code. Options, Mods lists them with what each may do and a switch. A switch applies at once for assets and data; a mod that adds blocks or changes world generation loads on the next start, and the page says so.</p>
