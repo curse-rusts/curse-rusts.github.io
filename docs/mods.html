@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mods in Curse</title>
-<meta name="description" content="Content mods, native mods and the public registry that is not deployed.">
+<meta name="description" content="Content mods, native mods, and where the catalog for this codebase is.">
 <link rel="canonical" href="https://curse-rusts.github.io/docs/mods.html">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/site.css">
 <meta property="og:title" content="Mods in Curse">
-<meta property="og:description" content="Content mods, native mods and the public registry that is not deployed.">
+<meta property="og:description" content="Content mods, native mods, and where the catalog for this codebase is.">
 <meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
 <meta property="og:type" content="website">
 </head>
@@ -37,7 +37,11 @@
   <p>A native mod is a <code>.cmod</code> bundle: Rust that changes the game's own source before it is compiled. The launcher builds it for the installed version and keeps the result in <code>curse-native-mods/</code>. An older <code>.hnmod</code> bundle still loads and is removed when the launcher replaces it.</p>
 
   <h2>The registry</h2>
-  <p>The public mod registry is not deployed. The game and the launcher have no index address, so the Mods page lists nothing and the in-game browser asks nothing. Mods installed by hand work today; the registry becomes available when it has an address, not before.</p>
+  <p>Curse has no registry of its own yet: the game and the launcher have no index address, so nothing is listed inside them. The catalog for this codebase is <a href="https://playhorizon.dev/mods">the Horizon one</a>. Content mods from it work as they are; native mods are compiled into the game and need a build for the version you play.</p>
+  <h2>Installing a content mod by hand</h2>
+  <p>Download the mod's <code>.hmod</code> file and put it in the game folder's <code>curse-mods/</code> directory (next to <code>options.txt</code>). Options, Mods lists it with what it may do and a switch; it starts off. A fresh install has no such folder and plays exactly like vanilla.</p>
+  <h2>Native mods</h2>
+  <p>A native mod (a <code>.cmod</code>) changes the game's own code and is compiled with it, so it only runs on the build it was made for. Ask its author for a build for your version, or wait until Curse has a public mod API: then a mod is a separate library the game loads, without recompiling the game.</p>
 
   <h2>What a mod may do</h2>
   <p>Each mod declares its capabilities in its manifest: add blocks, items, mob effects or entity types to your worlds, read and write its own storage, or run native code. Options, Mods lists them with what each may do and a switch. A switch applies at once for assets and data; a mod that adds blocks or changes world generation loads on the next start, and the page says so.</p>
