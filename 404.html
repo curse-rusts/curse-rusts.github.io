@@ -1,67 +1,98 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page not found</title>
-<meta name="description" content="That address is not part of the site.">
-<link rel="canonical" href="https://curse-rusts.github.io/">
-<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
-<meta property="og:title" content="Page not found">
-<meta property="og:description" content="That address is not part of the site.">
-<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
-<meta property="og:type" content="website">
-</head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
-    <nav>
-      <a href="/download.html">Download</a>
-      <a href="/docs.html">Docs</a>
-      <a href="/mods.html">Mods</a>
-      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
-    </nav>
-  </div>
-</header>
-<main class="wrap notfound">
-  <div>
-    <p class="tag">Page not found</p>
-    <h1>404</h1>
-    <p class="lead">That address is not part of the site. The launcher, the documentation and the mods page are.</p>
-    <div class="actions">
-      <a class="btn primary" href="/">Home</a>
-      <a class="btn" href="/docs.html">Documentation</a>
-    </div>
-  </div>
-</main>
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h4>Curse</h4>
-        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found</title>
+    <meta name="description" content="That address is not part of the site." />
+    <link rel="canonical" href="https://curse-rusts.github.io/" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/site.css?v=20261123" />
+    <meta name="theme-color" content="#111310" />
+    <script src="/assets/site.js?v=20261123" defer></script>
+    <meta property="og:title" content="Page not found" />
+    <meta
+      property="og:description"
+      content="That address is not part of the site."
+    />
+    <meta
+      property="og:image"
+      content="https://curse-rusts.github.io/assets/shots/valley.webp"
+    />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="Curse home"
+          ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+            >curse<span class="brand-dot">.</span></span
+          ></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="/#engine">The engine</a><a href="/mods.html">Mods</a
+          ><a href="/docs.html">Docs</a
+          ><a class="cta" href="/download.html"
+            >Get Curse</a
+          >
+        </nav>
       </div>
+    </header>
+    <main id="main" class="wrap notfound">
       <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="/download.html">Download</a></li>
-          <li><a href="/docs.html">Documentation</a></li>
-          <li><a href="/mods.html">Mods</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
-        </ul>
+        <p class="eyebrow">Page not found</p>
+        <h1>404</h1>
+        <p class="lead">
+          That address is not part of the site. The launcher, the documentation
+          and the mods page are.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="/">Home</a>
+          <a class="btn" href="/docs.html">Documentation</a>
+        </div>
       </div>
-      <div>
-        <h4>Project</h4>
-        <ul>
-          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
-        </ul>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <a class="brand" href="/"
+              ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+                >curse<span class="brand-dot">.</span></span
+              ></a
+            >
+            <p>Minecraft, rebuilt in Rust.<br />Same world. New engine.</p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="/download.html">Download</a></li>
+              <li><a href="/docs.html">Documentation</a></li>
+              <li><a href="/mods.html">Mods</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Stay in the loop</h4>
+            <ul>
+              <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+              <li>
+                <a href="https://github.com/curse-rusts/downloads/releases"
+                  >Release notes</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            Independent project. Not affiliated with Mojang Studios or
+            Microsoft.<br />Minecraft is a trademark of Mojang Studios. A
+            Minecraft: Java Edition account is required.
+          </p>
+          <span class="mono">BUILT WITH RUST. MADE FOR BLOCKS.</span>
+        </div>
       </div>
-    </div>
-    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
-  </div>
-</footer>
-</body>
+    </footer>
+  </body>
 </html>

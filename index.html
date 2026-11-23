@@ -1,170 +1,374 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Curse: Minecraft Java Edition 26.3 in Rust</title>
-<meta name="description" content="A native client and server for Minecraft: Java Edition 26.3. Download the launcher, read the documentation, host a server.">
-<link rel="canonical" href="https://curse-rusts.github.io/">
-<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
-<meta property="og:title" content="Curse: Minecraft Java Edition 26.3 in Rust">
-<meta property="og:description" content="A native client and server for Minecraft: Java Edition 26.3. Download the launcher, read the documentation, host a server.">
-<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
-<meta property="og:type" content="website">
-</head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
-    <nav>
-      <a href="/download.html">Download</a>
-      <a href="/docs.html">Docs</a>
-      <a href="/mods.html">Mods</a>
-      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
-    </nav>
-  </div>
-</header>
-<section class="hero">
-  <img class="hero-img" src="/assets/shots/valley.webp" alt="A river valley with a village, savanna hills and a cherry grove seen from above">
-  <div class="wrap">
-    <div class="hero-copy">
-      <p class="tag">Minecraft: Java Edition 26.3</p>
-      <h1>Java Edition,<br>without Java.</h1>
-      <p class="lead">Curse is a native client and server for Minecraft: Java Edition 26.3. Your worlds, your account, the same rules, in one Rust binary.</p>
-      <div class="actions">
-        <a class="btn primary" href="https://github.com/curse-rusts/downloads/releases/latest">Download the launcher</a>
-        <a class="btn" href="/download.html">Files and requirements</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111310" />
+    <title>Curse — Minecraft, rebuilt in Rust</title>
+    <meta
+      name="description"
+      content="Your familiar block world. A new native engine. Curse brings Minecraft: Java Edition 26.3 to Rust, with a native client, server and launcher for Windows and Linux."
+    />
+    <link rel="canonical" href="https://curse-rusts.github.io/" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/assets/fonts/BricolageGrotesqueDisplay-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/assets/site.css?v=20261123" />
+    <script src="/assets/site.js?v=20261123" defer></script>
+    <meta property="og:title" content="Curse — Minecraft, rebuilt in Rust" />
+    <meta
+      property="og:description"
+      content="Your familiar block world. A new native engine. Minecraft: Java Edition 26.3, in Rust."
+    />
+    <meta
+      property="og:image"
+      content="https://curse-rusts.github.io/assets/shots/valley.webp"
+    />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="home">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="Curse home"
+          ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+            >curse<span class="brand-dot">.</span></span
+          ></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="/#engine">The engine</a><a href="/mods.html">Mods</a
+          ><a href="/docs.html">Docs</a
+          ><a class="cta" href="/download.html"
+            >Get Curse</a
+          >
+        </nav>
       </div>
-      <p class="fine">Windows and Linux. The launcher asks for a Microsoft account that owns Minecraft: Java Edition before anything else.</p>
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap split">
-    <div class="copy">
-      <p class="tag">The game</p>
-      <h2>Survival, creative, redstone, commands.</h2>
-      <p>The client is the game: world generation in all three dimensions, mobs, villagers, raids, redstone, every command, the HUD and the recipe book. Resource packs, data packs and shader packs load as they do in the Java game.</p>
-      <ul class="list">
-        <li><strong>Worlds.</strong> Vanilla saves open as they are. Worlds from 1.8 to 26.2 are upgraded on the way in.</li>
-        <li><strong>Multiplayer.</strong> Join vanilla and Curse servers in online mode, open a world to LAN, or invite friends from the launcher.</li>
-        <li><strong>No Java.</strong> The renderer, the server and the tools are native code. There is no JVM to install and no Java process to keep alive.</li>
-      </ul>
-    </div>
-    <figure class="shot">
-      <img src="/assets/shots/survival.webp" alt="Survival in a village square: two villagers, flowers, the hotbar and the health bar">
-      <figcaption>Survival, village square</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap split reverse">
-    <div class="copy">
-      <p class="tag">The server</p>
-      <h2>One program to host.</h2>
-      <p><code>curse-server</code> supervises the game's engine in server mode: a CLI, a full-screen console, a web panel and a control API, with no Java and no Python on the machine. The world format, the protocol and the rules are the client's own.</p>
-      <ul class="list">
-        <li><strong>Ticks.</strong> 20 ticks a second on one thread; chunk generation and lighting run on a worker pool.</li>
-        <li><strong>Config.</strong> Vanilla's <code>server.properties</code> and <code>eula.txt</code>, plus one <code>server.toml</code> for the supervisor.</li>
-        <li><strong>Operations.</strong> Backups, updates and crash restarts are the supervisor's job, not a script's.</li>
-      </ul>
-    </div>
-    <figure class="shot">
-      <img src="/assets/shots/nether.webp" alt="A crimson forest in the Nether with a piglin among the fungi">
-      <figcaption>The Nether, crimson forest</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap">
-    <div class="copy" style="max-width:760px">
-      <p class="tag">The launcher</p>
-      <h2>One file, then the game.</h2>
-      <p>A player downloads the launcher and nothing else. It signs in with Microsoft, finds an existing Minecraft installation or downloads 26.3 from Mojang, prepares the resources the game reads, and keeps the client current. Servers and native mods are built from the same launcher.</p>
-    </div>
-    <div class="note">
-      <p>The launcher is the only download a player needs. The game, its resources and the server archives are fetched and prepared for the account that signed in.</p>
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap">
-    <p class="tag">Status</p>
-    <h2>What is on, and what is not.</h2>
-    <p class="copy" style="max-width:66ch">The client, the server and the launcher work. A few services are deliberately off in this build: their addresses are empty, so the game contacts nothing. Nothing below is a promise with a date.</p>
-    <table class="table">
-      <thead><tr><th>Service</th><th>State</th><th>What that means</th></tr></thead>
-      <tbody>
-        <tr><td>Official server</td><td><span class="state">Off</span></td><td>No server is offered in the list.</td></tr>
-        <tr><td>Telemetry</td><td><span class="state">Off</span></td><td>No endpoint, so nothing is sent.</td></tr>
-        <tr><td>Cosmetics and emotes</td><td><span class="state">Off</span></td><td>No service is asked; no items are drawn.</td></tr>
-        <tr><td>Shop</td><td><span class="state">Off</span></td><td>No checkout page exists.</td></tr>
-        <tr><td>Public mod registry</td><td><span class="state">Off</span></td><td>Mods installed by hand work; the browser lists nothing.</td></tr>
-        <tr><td>The game itself</td><td><span class="state on">On</span></td><td>Client, dedicated server, launcher, LAN and online play.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap split">
-    <div class="copy">
-      <p class="tag">Parity</p>
-      <h2>Measured against the Java game.</h2>
-      <p>The differential harnesses run vanilla 26.3 and Curse on the same scene, the same seed and the same ticks, then compare what a player can observe: positions, motion, AI state, sounds, packets and rendered output. A harness passes only when every compared value matches.</p>
-      <p>The project's port ledger reads every vanilla 26.3 method against Curse's code. Player-visible gaps open today: 0 of 833. The audit and what players still run into are in the repository's status section.</p>
-    </div>
-    <figure class="shot">
-      <img src="/assets/shots/sunset.webp" alt="Sunset behind a cherry grove on a hill, with a river below">
-      <figcaption>Cherry grove at sunset</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="band tight">
-  <div class="wrap">
-    <div class="copy" style="max-width:760px">
-      <p class="tag">Download</p>
-      <h2>Start with the launcher.</h2>
-      <p>Windows and Linux. The releases page holds the launcher, the game archives it installs, and, for hosts, the server archive.</p>
-      <div class="actions">
-        <a class="btn primary" href="https://github.com/curse-rusts/downloads/releases/latest">Open releases</a>
-        <a class="btn" href="/download.html">Requirements</a>
+    </header>
+    <main id="main">
+      <section class="hero wrap">
+        <div class="hero-intro">
+          <a
+            class="release-pill"
+            href="https://github.com/curse-rusts/downloads/releases/tag/v0.2.7"
+            ><span class="release-icon" aria-hidden="true">✳</span> Game v0.2.7
+            <span class="pill-separator">/</span> Java Edition 26.3</a
+          ><span class="hero-note">BUILT DIFFERENT. FEELS FAMILIAR.</span>
+        </div>
+        <div class="hero-heading">
+          <h1>Same world.<br /><span>New engine.</span></h1>
+          <div class="hero-copy">
+            <p>
+              Minecraft, rebuilt in <strong>Rust.</strong><br />Your worlds,
+              your account, the rules you know. A native client and server, from
+              the first block up.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="/download.html">Download Curse</a
+              ><a class="text-link" href="#engine">Explore the engine</a>
+            </div>
+            <p class="fine">
+              Windows &amp; Linux · Minecraft: Java Edition required
+            </p>
+          </div>
+        </div>
+        <figure class="world-window">
+          <img
+            src="/assets/shots/valley.webp"
+            width="1600"
+            height="900"
+            fetchpriority="high"
+            alt="A Minecraft river winding through a green valley, with a village in the foreground"
+          />
+          <div class="world-top">
+            <span class="image-label"
+              ><span class="tiny-cube" aria-hidden="true"></span> THE
+              OVERWORLD</span
+            ><span class="image-label">RENDERED IN CURSE</span>
+          </div>
+          <figcaption>
+            <span>A world you already know.</span
+            ><span class="mono">A whole new foundation.</span>
+          </figcaption>
+        </figure>
+        <div class="tech-strip">
+          <span>FAMILIAR ON THE SURFACE. NATIVE UNDERNEATH.</span>
+          <div>
+            <span>Rust</span><i aria-hidden="true">/</i><span>wgpu</span
+            ><i aria-hidden="true">/</i><span>GPUI</span
+            ><i aria-hidden="true">/</i><span>No JVM</span>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap" id="engine">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A NEW FOUNDATION</p>
+            <h2>Every block familiar.<br />Every layer rebuilt.</h2>
+          </div>
+          <p class="section-lead">
+            Curse reimplements Minecraft: Java Edition 26.3 in Rust. Vanilla is
+            the specification — from the way a world generates to the way
+            redstone ticks.
+          </p>
+        </div>
+        <div class="engine-grid">
+          <article class="feature feature-native">
+            <div class="feature-top">
+              <span class="eyebrow">THE ENGINE</span
+              ><span class="code-mark" aria-hidden="true">{ }</span>
+            </div>
+            <h3>Rust at the core.</h3>
+            <p>
+              Rendering, world simulation and networking run as native code. No
+              JVM to install. No Java process behind the game.
+            </p>
+            <div class="engine-stack">
+              <span><b>CURSE</b><em>Client + server</em></span
+              ><span><b>RUST</b><em>Native engine</em></span
+              ><span><b>WGPU</b><em>GPU rendering</em></span>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature-top">
+              <span class="eyebrow">YOUR WORLDS</span
+              ><span class="block-symbol" aria-hidden="true">▦</span>
+            </div>
+            <h3>Pick up where<br />you left off.</h3>
+            <p>
+              Open vanilla saves. Bring your resource packs and data packs. Play
+              survival, build in creative, or join a vanilla server.
+            </p>
+            <a class="text-link" href="/docs/install.html"
+              >First launch guide</a
+            >
+          </article>
+          <article class="feature feature-parity">
+            <div class="feature-top">
+              <span class="eyebrow">THE STANDARD</span
+              ><span class="code-mark" aria-hidden="true">=</span>
+            </div>
+            <h3>Vanilla sets<br />the rules.</h3>
+            <p>
+              Differential harnesses run the Java game and Curse on matching
+              inputs, then compare observable behavior.
+            </p>
+            <div
+              class="parity-lines"
+              aria-label="Parity compares world generation, game logic and network behavior"
+            >
+              <span>World generation <b>compare</b></span
+              ><span>Game logic <b>compare</b></span
+              ><span>Network behavior <b>compare</b></span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="section gallery-section" aria-labelledby="worlds-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">THE WORLD IS STILL YOURS</p>
+              <h2 id="worlds-title">Lose yourself.<br />Find something new.</h2>
+            </div>
+            <div
+              class="world-tabs"
+              role="group"
+              aria-label="Choose a game screenshot"
+            >
+              <button
+                type="button"
+                class="world-tab"
+                aria-pressed="true"
+                data-world="overworld"
+              >
+                Overworld</button
+              ><button
+                type="button"
+                class="world-tab"
+                aria-pressed="false"
+                data-world="nether"
+              >
+                The Nether</button
+              ><button
+                type="button"
+                class="world-tab"
+                aria-pressed="false"
+                data-world="survival"
+              >
+                Survival
+              </button>
+            </div>
+          </div>
+          <figure class="gallery">
+            <img
+              id="world-image"
+              src="/assets/shots/sunset.webp"
+              width="1600"
+              height="900"
+              loading="lazy"
+              alt="The sun setting over a cherry grove and a river valley"
+            />
+            <figcaption>
+              <div>
+                <span class="eyebrow" id="world-kicker">THE OVERWORLD</span>
+                <h3 id="world-caption">
+                  One more sunset.<br />Then we log off.
+                </h3>
+              </div>
+              <span class="image-label">IN-GAME CAPTURE / CURSE</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="section wrap" id="ecosystem">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">BEYOND THE ENGINE</p>
+            <h2>A whole place to play.</h2>
+          </div>
+          <p class="section-lead">
+            A launcher to get you into the world. Tools to make it your own. A
+            server to bring everyone together.
+          </p>
+        </div>
+        <div class="ecosystem-grid">
+          <article class="launcher-feature">
+            <div class="feature-top">
+              <span class="eyebrow">THE LAUNCHER</span
+              ><span class="mono">RUST / GPUI</span>
+            </div>
+            <h3>Less setup.<br />More playing.</h3>
+            <p>
+              Sign in with Microsoft. Prepare the game. Keep it updated. The
+              native launcher takes care of the path to your next world.
+            </p>
+            <div class="launch-flow">
+              <span>Sign in</span><span aria-hidden="true">/</span
+              ><span>Prepare</span><span aria-hidden="true">/</span><b>Play</b>
+            </div>
+            <a class="btn" href="/download.html">Get the launcher</a>
+          </article>
+          <div class="ecosystem-side">
+            <article>
+              <span class="eyebrow">MAKE IT YOURS</span>
+              <h3>Blocks, data &amp; Rust.</h3>
+              <p>
+                Content mods add assets and data. Native mods change the game
+                through Rust code. Explore how each works.
+              </p>
+              <a class="text-link" href="/mods.html">Meet the mod system</a>
+            </article>
+            <article>
+              <span class="eyebrow">BRING YOUR PEOPLE</span>
+              <h3>Your world. Your server.</h3>
+              <p>
+                A dedicated native server with a console, web panel, backups and
+                crash restarts. Your place, your rules.
+              </p>
+              <a class="text-link" href="/docs/server.html">Host a server</a>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap faq-section">
+        <div>
+          <p class="eyebrow">BEFORE YOU JUMP IN</p>
+          <h2>A few things<br />to know.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Do I need to own Minecraft?</summary>
+            <p>
+              Yes. You need a Microsoft account that owns Minecraft: Java
+              Edition. The launcher checks ownership and prepares resources from
+              your installation or downloads them from Mojang for your account.
+              Curse does not distribute Minecraft assets.
+            </p>
+          </details>
+          <details>
+            <summary>Is this a mod or a Java launcher?</summary>
+            <p>
+              Curse is a native reimplementation of the client and server in
+              Rust. Its separate launcher is also written in Rust, using GPUI.
+              The game does not run inside a JVM.
+            </p>
+          </details>
+          <details>
+            <summary>Can I use my existing worlds?</summary>
+            <p>
+              Curse reads vanilla saves and supports upgrades from older world
+              versions. Keep a backup before opening an existing world in
+              another game build.
+            </p>
+          </details>
+          <details>
+            <summary>What is available today?</summary>
+            <p>
+              The client, dedicated server and launcher are published for
+              Windows and Linux. Curse's public mod registry, official server,
+              cosmetics and shop are not available. Browse the release notes for
+              the current builds.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="wrap">
+        <div class="download-banner">
+          <span class="eyebrow">YOUR NEXT WORLD IS WAITING</span>
+          <h2>Let's build<br />something.</h2>
+          <div>
+            <a class="btn dark" href="/download.html">Download Curse</a>
+            <p>Windows &amp; Linux<br />Minecraft: Java Edition 26.3</p>
+          </div>
+          <span class="banner-blocks" aria-hidden="true">▟</span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <a class="brand" href="/"
+              ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+                >curse<span class="brand-dot">.</span></span
+              ></a
+            >
+            <p>Minecraft, rebuilt in Rust.<br />Same world. New engine.</p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="/download.html">Download</a></li>
+              <li><a href="/docs.html">Documentation</a></li>
+              <li><a href="/mods.html">Mods</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Stay in the loop</h4>
+            <ul>
+              <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+              <li>
+                <a href="https://github.com/curse-rusts/downloads/releases"
+                  >Release notes</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            Independent project. Not affiliated with Mojang Studios or
+            Microsoft.<br />Minecraft is a trademark of Mojang Studios. A
+            Minecraft: Java Edition account is required.
+          </p>
+          <span class="mono">BUILT WITH RUST. MADE FOR BLOCKS.</span>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h4>Curse</h4>
-        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
-      </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="/download.html">Download</a></li>
-          <li><a href="/docs.html">Documentation</a></li>
-          <li><a href="/mods.html">Mods</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Project</h4>
-        <ul>
-          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
-  </div>
-</footer>
-</body>
+    </footer>
+  </body>
 </html>

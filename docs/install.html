@@ -1,83 +1,157 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Install and first launch</title>
-<meta name="description" content="Install the Curse launcher, sign in with Microsoft, prepare the game and play.">
-<link rel="canonical" href="https://curse-rusts.github.io/docs/install.html">
-<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
-<meta property="og:title" content="Install and first launch">
-<meta property="og:description" content="Install the Curse launcher, sign in with Microsoft, prepare the game and play.">
-<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
-<meta property="og:type" content="website">
-</head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
-    <nav>
-      <a href="/download.html">Download</a>
-      <a href="/docs.html">Docs</a>
-      <a href="/mods.html">Mods</a>
-      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
-    </nav>
-  </div>
-</header>
-<main class="wrap doc">
-  <p class="crumbs"><a href="/">Curse</a> / <a href="/docs.html">Documentation</a> / Install</p>
-  <h1>Install and first launch</h1>
-  <p class="lead">From an empty machine to a world, with a Microsoft account that owns Minecraft: Java Edition.</p>
-
-  <h2>1. Download the launcher</h2>
-  <p>Take the file for your platform from the releases page. On Linux, the AppImage runs as it is; the tarball holds the same launcher beside its files.</p>
-
-  <h2>2. Sign in</h2>
-  <p>The launcher opens on the Microsoft sign-in and does not continue without it. Sign in, then the account must own Minecraft: Java Edition. The sign-in window names the code and the address to enter it; the launcher waits for the account and then shows it on the Play page.</p>
-
-  <h2>3. Let it prepare the game</h2>
-  <p>The launcher looks for an existing Minecraft installation. When it finds one, it prepares Curse's resources from those files; when it does not, it downloads 26.3 from Mojang for the signed-in account. Nothing is taken from a third-party launcher's private folders without that installation being present.</p>
-
-  <h2>4. Play</h2>
-  <p>Choose the installed version and press Play. The launcher starts the client with the prepared resources; the first start takes longer while the world's resources are read.</p>
-
-  <h2>Where the files go</h2>
-  <p>The launcher keeps its data in a folder of its own: settings, accounts, installed versions, prepared resources, mods and caches. The game folder holds the world saves and the options, as in the Java game. The launcher's data folder can be moved from its settings; the game folder follows the version you play.</p>
-
-  <h2>If the game does not start</h2>
-  <ul>
-    <li>Check that the Microsoft account owns Java Edition, not only a Microsoft account.</li>
-    <li>Check that the GPU driver provides Vulkan or OpenGL 3.3. On Linux, install the Vulkan loader and your GPU's driver.</li>
-    <li>Open the launcher's log from its data folder; the first error line names the missing piece.</li>
-  </ul>
-</main>
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h4>Curse</h4>
-        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Install and first launch</title>
+    <meta
+      name="description"
+      content="Install the Curse launcher, sign in with Microsoft, prepare the game and play."
+    />
+    <link
+      rel="canonical"
+      href="https://curse-rusts.github.io/docs/install.html"
+    />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/site.css?v=20261123" />
+    <meta name="theme-color" content="#111310" />
+    <script src="/assets/site.js?v=20261123" defer></script>
+    <meta property="og:title" content="Install and first launch" />
+    <meta
+      property="og:description"
+      content="Install the Curse launcher, sign in with Microsoft, prepare the game and play."
+    />
+    <meta
+      property="og:image"
+      content="https://curse-rusts.github.io/assets/shots/valley.webp"
+    />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="Curse home"
+          ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+            >curse<span class="brand-dot">.</span></span
+          ></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="/#engine">The engine</a><a href="/mods.html">Mods</a
+          ><a href="/docs.html">Docs</a
+          ><a class="cta" href="/download.html"
+            >Get Curse</a
+          >
+        </nav>
       </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="/download.html">Download</a></li>
-          <li><a href="/docs.html">Documentation</a></li>
-          <li><a href="/mods.html">Mods</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
-        </ul>
+    </header>
+    <main id="main" class="wrap doc">
+      <p class="crumbs">
+        <a href="/">Curse</a> / <a href="/docs.html">Documentation</a> / Install
+      </p>
+      <h1>Install and first launch</h1>
+      <p class="lead">
+        From an empty machine to a world, with a Microsoft account that owns
+        Minecraft: Java Edition.
+      </p>
+
+      <h2>1. Download the launcher</h2>
+      <p>
+        Choose Windows or Linux on the
+        <a href="/download.html">download page</a>. On Windows, run the
+        installer. On Linux, extract the launcher archive and run the executable
+        inside.
+      </p>
+
+      <h2>2. Sign in</h2>
+      <p>
+        The launcher opens on the Microsoft sign-in and does not continue
+        without it. Sign in, then the account must own Minecraft: Java Edition.
+        The sign-in window names the code and the address to enter it; the
+        launcher waits for the account and then shows it on the Play page.
+      </p>
+
+      <h2>3. Let it prepare the game</h2>
+      <p>
+        The launcher looks for an existing Minecraft installation. When it finds
+        one, it prepares Curse's resources from those files; when it does not,
+        it downloads 26.3 from Mojang for the signed-in account. Nothing is
+        taken from a third-party launcher's private folders without that
+        installation being present.
+      </p>
+
+      <h2>4. Play</h2>
+      <p>
+        Choose the installed version and press Play. The launcher starts the
+        client with the prepared resources; the first start takes longer while
+        the world's resources are read.
+      </p>
+
+      <h2>Where the files go</h2>
+      <p>
+        The launcher keeps its data in a folder of its own: settings, accounts,
+        installed versions, prepared resources, mods and caches. The game folder
+        holds the world saves and the options, as in the Java game. The
+        launcher's data folder can be moved from its settings; the game folder
+        follows the version you play.
+      </p>
+
+      <h2>If the game does not start</h2>
+      <ul>
+        <li>
+          Check that the Microsoft account owns Java Edition, not only a
+          Microsoft account.
+        </li>
+        <li>
+          Check that the GPU driver provides Vulkan or OpenGL 3.3. On Linux,
+          install the Vulkan loader and your GPU's driver.
+        </li>
+        <li>
+          Open the launcher's log from its data folder; the first error line
+          names the missing piece.
+        </li>
+      </ul>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <a class="brand" href="/"
+              ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+                >curse<span class="brand-dot">.</span></span
+              ></a
+            >
+            <p>Minecraft, rebuilt in Rust.<br />Same world. New engine.</p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="/download.html">Download</a></li>
+              <li><a href="/docs.html">Documentation</a></li>
+              <li><a href="/mods.html">Mods</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Stay in the loop</h4>
+            <ul>
+              <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+              <li>
+                <a href="https://github.com/curse-rusts/downloads/releases"
+                  >Release notes</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            Independent project. Not affiliated with Mojang Studios or
+            Microsoft.<br />Minecraft is a trademark of Mojang Studios. A
+            Minecraft: Java Edition account is required.
+          </p>
+          <span class="mono">BUILT WITH RUST. MADE FOR BLOCKS.</span>
+        </div>
       </div>
-      <div>
-        <h4>Project</h4>
-        <ul>
-          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
-  </div>
-</footer>
-</body>
+    </footer>
+  </body>
 </html>

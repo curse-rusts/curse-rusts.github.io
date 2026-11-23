@@ -1,73 +1,134 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Telemetry</title>
-<meta name="description" content="Curse sends nothing: the build has no telemetry endpoint.">
-<link rel="canonical" href="https://curse-rusts.github.io/docs/telemetry.html">
-<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
-<meta property="og:title" content="Telemetry">
-<meta property="og:description" content="Curse sends nothing: the build has no telemetry endpoint.">
-<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
-<meta property="og:type" content="website">
-</head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
-    <nav>
-      <a href="/download.html">Download</a>
-      <a href="/docs.html">Docs</a>
-      <a href="/mods.html">Mods</a>
-      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
-    </nav>
-  </div>
-</header>
-<main class="wrap doc">
-  <p class="crumbs"><a href="/">Curse</a> / <a href="/docs.html">Documentation</a> / Telemetry</p>
-  <h1>Telemetry</h1>
-  <p class="lead">Curse sends nothing. The client has no telemetry endpoint, so there is nowhere for data to go.</p>
-
-  <h2>What is sent</h2>
-  <p>Nothing. The build has an empty telemetry address, which turns the whole feature off: no performance summary, no launch count, no "I'm playing" ping. The settings that would control those items are present, because the client is the same one that will use them when a service exists, but with no endpoint they never leave the machine.</p>
-
-  <h2>What would be sent</h2>
-  <p>If an endpoint is configured, the client sends only what the settings allow: performance summaries, crash reports that the player chose to send, and the heartbeat that counts players. It never sends account names, UUIDs, world names, chat, server addresses or file paths. The full schema lives in the source repository's telemetry document.</p>
-
-  <h2>A local endpoint</h2>
-  <p>For development, <code>CURSE_TELEMETRY_URL</code> names an endpoint; <code>CURSE_TELEMETRY_URL=off</code> turns sending off even when one is set. Tests and automated runs set <code>off</code>.</p>
-
-  <h2>Why this page exists</h2>
-  <p>Because a page that says nothing is easier to trust than a page that describes a service that is not there. When Curse has a telemetry service, this page will name it, the data it keeps and the way to delete it.</p>
-</main>
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h4>Curse</h4>
-        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Telemetry</title>
+    <meta
+      name="description"
+      content="Curse sends nothing: the build has no telemetry endpoint."
+    />
+    <link
+      rel="canonical"
+      href="https://curse-rusts.github.io/docs/telemetry.html"
+    />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/site.css?v=20261123" />
+    <meta name="theme-color" content="#111310" />
+    <script src="/assets/site.js?v=20261123" defer></script>
+    <meta property="og:title" content="Telemetry" />
+    <meta
+      property="og:description"
+      content="Curse sends nothing: the build has no telemetry endpoint."
+    />
+    <meta
+      property="og:image"
+      content="https://curse-rusts.github.io/assets/shots/valley.webp"
+    />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="Curse home"
+          ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+            >curse<span class="brand-dot">.</span></span
+          ></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="/#engine">The engine</a><a href="/mods.html">Mods</a
+          ><a href="/docs.html">Docs</a
+          ><a class="cta" href="/download.html"
+            >Get Curse</a
+          >
+        </nav>
       </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="/download.html">Download</a></li>
-          <li><a href="/docs.html">Documentation</a></li>
-          <li><a href="/mods.html">Mods</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
-        </ul>
+    </header>
+    <main id="main" class="wrap doc">
+      <p class="crumbs">
+        <a href="/">Curse</a> / <a href="/docs.html">Documentation</a> /
+        Telemetry
+      </p>
+      <h1>Telemetry</h1>
+      <p class="lead">
+        Curse sends nothing. The client has no telemetry endpoint, so there is
+        nowhere for data to go.
+      </p>
+
+      <h2>What is sent</h2>
+      <p>
+        Nothing. The build has an empty telemetry address, which turns the whole
+        feature off: no performance summary, no launch count, no "I'm playing"
+        ping. The settings that would control those items are present, because
+        the client is the same one that will use them when a service exists, but
+        with no endpoint they never leave the machine.
+      </p>
+
+      <h2>What would be sent</h2>
+      <p>
+        If an endpoint is configured, the client sends only what the settings
+        allow: performance summaries, crash reports that the player chose to
+        send, and the heartbeat that counts players. It never sends account
+        names, UUIDs, world names, chat, server addresses or file paths. The
+        full schema lives in the source repository's telemetry document.
+      </p>
+
+      <h2>A local endpoint</h2>
+      <p>
+        For development, <code>CURSE_TELEMETRY_URL</code> names an endpoint;
+        <code>CURSE_TELEMETRY_URL=off</code> turns sending off even when one is
+        set. Tests and automated runs set <code>off</code>.
+      </p>
+
+      <h2>Why this page exists</h2>
+      <p>
+        Because a page that says nothing is easier to trust than a page that
+        describes a service that is not there. When Curse has a telemetry
+        service, this page will name it, the data it keeps and the way to delete
+        it.
+      </p>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <a class="brand" href="/"
+              ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+                >curse<span class="brand-dot">.</span></span
+              ></a
+            >
+            <p>Minecraft, rebuilt in Rust.<br />Same world. New engine.</p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="/download.html">Download</a></li>
+              <li><a href="/docs.html">Documentation</a></li>
+              <li><a href="/mods.html">Mods</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Stay in the loop</h4>
+            <ul>
+              <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+              <li>
+                <a href="https://github.com/curse-rusts/downloads/releases"
+                  >Release notes</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            Independent project. Not affiliated with Mojang Studios or
+            Microsoft.<br />Minecraft is a trademark of Mojang Studios. A
+            Minecraft: Java Edition account is required.
+          </p>
+          <span class="mono">BUILT WITH RUST. MADE FOR BLOCKS.</span>
+        </div>
       </div>
-      <div>
-        <h4>Project</h4>
-        <ul>
-          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
-  </div>
-</footer>
-</body>
+    </footer>
+  </body>
 </html>

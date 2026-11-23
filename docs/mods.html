@@ -1,77 +1,144 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mods in Curse</title>
-<meta name="description" content="Content mods, native mods, and where the catalog for this codebase is.">
-<link rel="canonical" href="https://curse-rusts.github.io/docs/mods.html">
-<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
-<meta property="og:title" content="Mods in Curse">
-<meta property="og:description" content="Content mods, native mods, and where the catalog for this codebase is.">
-<meta property="og:image" content="https://curse-rusts.github.io/assets/shots/valley.webp">
-<meta property="og:type" content="website">
-</head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><img src="/assets/logo.svg" width="26" height="26" alt=""><span>Curse</span></a>
-    <nav>
-      <a href="/download.html">Download</a>
-      <a href="/docs.html">Docs</a>
-      <a href="/mods.html">Mods</a>
-      <a class="cta" href="https://github.com/curse-rusts/downloads">Builds</a>
-    </nav>
-  </div>
-</header>
-<main class="wrap doc">
-  <p class="crumbs"><a href="/">Curse</a> / <a href="/docs.html">Documentation</a> / Mods</p>
-  <h1>Mods</h1>
-  <p class="lead">Two kinds of mod run in Curse: data and assets, or native Rust code. Both are off by default.</p>
-
-  <h2>Content mods</h2>
-  <p>A content mod is a <code>.hmod</code> file: blocks, items, recipes, loot, tags, models, textures, structures. It carries no code. Put it in the game folder's <code>curse-mods/</code> directory, or open Options, Mods, Browse Mods. A fresh install has no such folder and plays exactly like vanilla.</p>
-
-  <h2>Native mods</h2>
-  <p>A native mod is a <code>.cmod</code> bundle: Rust that changes the game's own source before it is compiled. The launcher builds it for the installed version and keeps the result in <code>curse-native-mods/</code>. An older <code>.hnmod</code> bundle still loads and is removed when the launcher replaces it.</p>
-
-  <h2>The registry</h2>
-  <p>Curse has no registry of its own yet: the game and the launcher have no index address, so nothing is listed inside them. The catalog for this codebase is <a href="https://playhorizon.dev/mods">the Horizon one</a>. Content mods from it work as they are; native mods are compiled into the game and need a build for the version you play.</p>
-  <h2>Installing a content mod by hand</h2>
-  <p>Download the mod's <code>.hmod</code> file and put it in the game folder's <code>curse-mods/</code> directory (next to <code>options.txt</code>). Options, Mods lists it with what it may do and a switch; it starts off. A fresh install has no such folder and plays exactly like vanilla.</p>
-  <h2>Native mods</h2>
-  <p>A native mod (a <code>.cmod</code>) changes the game's own code and is compiled with it, so it only runs on the build it was made for. Ask its author for a build for your version, or wait until Curse has a public mod API: then a mod is a separate library the game loads, without recompiling the game.</p>
-
-  <h2>What a mod may do</h2>
-  <p>Each mod declares its capabilities in its manifest: add blocks, items, mob effects or entity types to your worlds, read and write its own storage, or run native code. Options, Mods lists them with what each may do and a switch. A switch applies at once for assets and data; a mod that adds blocks or changes world generation loads on the next start, and the page says so.</p>
-</main>
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h4>Curse</h4>
-        <p>A native client and server for Minecraft: Java Edition 26.3.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mods in Curse</title>
+    <meta
+      name="description"
+      content="Content mods and native Rust mods: formats, installation and compatibility."
+    />
+    <link rel="canonical" href="https://curse-rusts.github.io/docs/mods.html" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/site.css?v=20261123" />
+    <meta name="theme-color" content="#111310" />
+    <script src="/assets/site.js?v=20261123" defer></script>
+    <meta property="og:title" content="Mods in Curse" />
+    <meta
+      property="og:description"
+      content="Content mods and native Rust mods: formats, installation and compatibility."
+    />
+    <meta
+      property="og:image"
+      content="https://curse-rusts.github.io/assets/shots/valley.webp"
+    />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="Curse home"
+          ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+            >curse<span class="brand-dot">.</span></span
+          ></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="/#engine">The engine</a><a href="/mods.html">Mods</a
+          ><a href="/docs.html">Docs</a
+          ><a class="cta" href="/download.html">Get Curse</a>
+        </nav>
       </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="/download.html">Download</a></li>
-          <li><a href="/docs.html">Documentation</a></li>
-          <li><a href="/mods.html">Mods</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads">Builds</a></li>
-        </ul>
+    </header>
+    <main id="main" class="wrap doc">
+      <p class="crumbs">
+        <a href="/">Curse</a> / <a href="/docs.html">Documentation</a> / Mods
+      </p>
+      <h1>Mods</h1>
+      <p class="lead">
+        Two kinds of mod run in Curse: data and assets, or native Rust code.
+        Both are off by default.
+      </p>
+
+      <h2>Content mods</h2>
+      <p>
+        A content mod is a <code>.hmod</code> file: blocks, items, recipes,
+        loot, tags, models, textures, structures. It carries no code. Put it in
+        the game folder's <code>curse-mods/</code> directory, or open Options,
+        Mods, Browse Mods. A fresh install has no such folder and plays exactly
+        like vanilla.
+      </p>
+
+      <h2>Native mods</h2>
+      <p>
+        A native mod is a <code>.cmod</code> bundle: Rust that changes the
+        game's own source before it is compiled. The launcher builds it for the
+        installed version and keeps the result in
+        <code>curse-native-mods/</code>. An older <code>.hnmod</code> bundle
+        still loads and is removed when the launcher replaces it.
+      </p>
+
+      <h2>The registry</h2>
+      <p>
+        Curse does not have a public mod registry yet. Content mods can be
+        installed by hand; native mods need a build compatible with the game
+        version you play.
+      </p>
+      <h2>Installing a content mod by hand</h2>
+      <p>
+        Download the mod's <code>.hmod</code> file and put it in the game
+        folder's <code>curse-mods/</code> directory (next to
+        <code>options.txt</code>). Options, Mods lists it with what it may do
+        and a switch; it starts off. A fresh install has no such folder and
+        plays exactly like vanilla.
+      </p>
+      <h2>Native mod compatibility</h2>
+      <p>
+        Native mods are compiled with the game. Use a mod made for the version
+        you play, and check its author's compatibility instructions before
+        installing it.
+      </p>
+
+      <h2>What a mod may do</h2>
+      <p>
+        Each mod declares its capabilities in its manifest: add blocks, items,
+        mob effects or entity types to your worlds, read and write its own
+        storage, or run native code. Options, Mods lists them with what each may
+        do and a switch. A switch applies at once for assets and data; a mod
+        that adds blocks or changes world generation loads on the next start,
+        and the page says so.
+      </p>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <a class="brand" href="/"
+              ><img src="/assets/logo.svg" width="34" height="34" alt="" /><span
+                >curse<span class="brand-dot">.</span></span
+              ></a
+            >
+            <p>Minecraft, rebuilt in Rust.<br />Same world. New engine.</p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="/download.html">Download</a></li>
+              <li><a href="/docs.html">Documentation</a></li>
+              <li><a href="/mods.html">Mods</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Stay in the loop</h4>
+            <ul>
+              <li><a href="https://github.com/curse-rusts">GitHub</a></li>
+              <li>
+                <a href="https://github.com/curse-rusts/downloads/releases"
+                  >Release notes</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            Independent project. Not affiliated with Mojang Studios or
+            Microsoft.<br />Minecraft is a trademark of Mojang Studios. A
+            Minecraft: Java Edition account is required.
+          </p>
+          <span class="mono">BUILT WITH RUST. MADE FOR BLOCKS.</span>
+        </div>
       </div>
-      <div>
-        <h4>Project</h4>
-        <ul>
-          <li><a href="https://github.com/curse-rusts">GitHub</a></li>
-          <li><a href="https://github.com/curse-rusts/downloads/releases">Releases</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="small">Curse is not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios. Playing needs a Microsoft account that owns Minecraft: Java Edition. The source is private.</p>
-  </div>
-</footer>
-</body>
+    </footer>
+  </body>
 </html>
