@@ -18,8 +18,9 @@
       type="font/ttf"
       crossorigin
     />
-    <link rel="stylesheet" href="/assets/site.css?v=20261123" />
-    <script src="/assets/site.js?v=20261123" defer></script>
+    <link rel="stylesheet" href="/assets/site.css?v=20261123b" />
+    <link rel="stylesheet" href="/assets/motion.css?v=20261123b" />
+    <script src="/assets/site.js?v=20261123b" defer></script>
     <meta property="og:title" content="Curse — Minecraft, rebuilt in Rust" />
     <meta
       property="og:description"
@@ -40,75 +41,121 @@
             >curse<span class="brand-dot">.</span></span
           ></a
         >
+        <button
+          class="command-trigger"
+          type="button"
+          aria-label="Open quick navigation"
+        >
+          <span aria-hidden="true">⌕</span> <kbd>Ctrl K</kbd>
+        </button>
         <nav aria-label="Main navigation">
           <a href="/#engine">The engine</a><a href="/mods.html">Mods</a
           ><a href="/docs.html">Docs</a
-          ><a class="cta" href="/download.html"
-            >Get Curse</a
-          >
+          ><a class="cta" href="/download.html">Get Curse</a>
         </nav>
       </div>
     </header>
     <main id="main">
-      <section class="hero wrap">
+      <section class="hero wrap kinetic-hero" aria-labelledby="hero-title">
+        <div class="hero-atmosphere" aria-hidden="true"></div>
         <div class="hero-intro">
           <a
             class="release-pill"
             href="https://github.com/curse-rusts/downloads/releases/tag/v0.2.7"
-            ><span class="release-icon" aria-hidden="true">✳</span> Game v0.2.7
-            <span class="pill-separator">/</span> Java Edition 26.3</a
-          ><span class="hero-note">BUILT DIFFERENT. FEELS FAMILIAR.</span>
+            ><span class="release-icon" aria-hidden="true">✳</span> GAME v0.2.7
+            <span class="pill-separator">/</span> EDITION 26.3</a
+          ><span class="hero-note"
+            >A FAMILIAR WORLD. REIMAGINED FROM WITHIN.</span
+          >
         </div>
-        <div class="hero-heading">
-          <h1>Same world.<br /><span>New engine.</span></h1>
-          <div class="hero-copy">
-            <p>
-              Minecraft, rebuilt in <strong>Rust.</strong><br />Your worlds,
-              your account, the rules you know. A native client and server, from
-              the first block up.
+        <div class="hero-stage">
+          <div class="hero-heading">
+            <p class="eyebrow hero-eyebrow">
+              <span class="rust-mark" aria-hidden="true">{R}</span> BUILT IN
+              RUST. BUILT TO PLAY.
             </p>
-            <div class="actions">
-              <a class="btn primary" href="/download.html">Download Curse</a
-              ><a class="text-link" href="#engine">Explore the engine</a>
+            <h1 id="hero-title">
+              <span class="title-line">Minecraft.</span
+              ><span class="title-line recompiled">Recompiled.</span>
+            </h1>
+            <div class="hero-copy">
+              <p>The world you love.<br />A whole new engine underneath.</p>
+              <p class="hero-description">
+                A native Minecraft: Java Edition client and server, rebuilt in
+                Rust. Your worlds. The same rules. A new beginning.
+              </p>
+              <div class="actions">
+                <a class="btn primary magnetic" href="/download.html"
+                  ><span>Enter your next world</span
+                  ><span class="button-block" aria-hidden="true">▧</span></a
+                ><a class="text-link" href="#engine">Discover Curse</a>
+              </div>
+              <p class="fine">WINDOWS + LINUX / YOUR MINECRAFT ACCOUNT</p>
             </div>
-            <p class="fine">
-              Windows &amp; Linux · Minecraft: Java Edition required
-            </p>
+          </div>
+          <div class="voxel-stage">
+            <div class="orbit orbit-one" aria-hidden="true"></div>
+            <div class="orbit orbit-two" aria-hidden="true"></div>
+            <div class="scene-cross cross-one" aria-hidden="true">+</div>
+            <div class="scene-cross cross-two" aria-hidden="true">+</div>
+            <span class="scene-caption mono">A WORLD OF POSSIBILITIES</span
+            ><canvas
+              id="voxel-world"
+              role="img"
+              aria-label="An animated floating voxel island. Drag horizontally to rotate. The buttons below change its dimension."
+            ></canvas>
+            <div class="scene-hint">
+              <span class="drag-icon" aria-hidden="true">⠿</span> DRAG TO
+              EXPLORE <span>/ INTERACTIVE VOXEL STUDY</span>
+            </div>
+            <div
+              class="biome-switch"
+              role="group"
+              aria-label="Voxel island dimension"
+            >
+              <button type="button" data-biome="overworld" aria-pressed="true">
+                <span class="biome-dot overworld-dot" aria-hidden="true"></span
+                >Overworld</button
+              ><button type="button" data-biome="nether" aria-pressed="false">
+                <span class="biome-dot nether-dot" aria-hidden="true"></span
+                >Nether</button
+              ><button type="button" data-biome="end" aria-pressed="false">
+                <span class="biome-dot end-dot" aria-hidden="true"></span>The
+                End
+              </button>
+            </div>
           </div>
         </div>
-        <figure class="world-window">
-          <img
-            src="/assets/shots/valley.webp"
-            width="1600"
-            height="900"
-            fetchpriority="high"
-            alt="A Minecraft river winding through a green valley, with a village in the foreground"
-          />
-          <div class="world-top">
-            <span class="image-label"
-              ><span class="tiny-cube" aria-hidden="true"></span> THE
-              OVERWORLD</span
-            ><span class="image-label">RENDERED IN CURSE</span>
-          </div>
-          <figcaption>
-            <span>A world you already know.</span
-            ><span class="mono">A whole new foundation.</span>
-          </figcaption>
-        </figure>
-        <div class="tech-strip">
-          <span>FAMILIAR ON THE SURFACE. NATIVE UNDERNEATH.</span>
-          <div>
-            <span>Rust</span><i aria-hidden="true">/</i><span>wgpu</span
-            ><i aria-hidden="true">/</i><span>GPUI</span
-            ><i aria-hidden="true">/</i><span>No JVM</span>
-          </div>
+        <div class="hero-bottom">
+          <span class="mono"
+            >THE BLOCKS STAY.<br />THE POSSIBILITIES EXPAND.</span
+          ><a class="scroll-cue" href="#engine"
+            ><span class="scroll-wheel" aria-hidden="true"></span>SCROLL TO
+            DISCOVER</a
+          ><span class="mono hero-bottom-right"
+            >RUST × WGPU × GPUI<br />NATIVE, ALL THE WAY DOWN.</span
+          >
         </div>
       </section>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>MINECRAFT. RECOMPILED.</span><b>✳</b
+          ><span>SAME WORLD. NEW ENGINE.</span><b>✳</b
+          ><span>BUILT IN RUST.</span><b>✳</b
+          ><span>MINECRAFT. RECOMPILED.</span><b>✳</b
+          ><span>SAME WORLD. NEW ENGINE.</span><b>✳</b
+          ><span>BUILT IN RUST.</span><b>✳</b>
+        </div>
+      </div>
       <section class="section wrap" id="engine">
         <div class="section-heading">
           <div>
             <p class="eyebrow">A NEW FOUNDATION</p>
-            <h2>Every block familiar.<br />Every layer rebuilt.</h2>
+            <h2>
+              Familiar feeling.<br /><span class="gradient-text"
+                >Unfamiliar possibilities.</span
+              >
+            </h2>
           </div>
           <p class="section-lead">
             Curse reimplements Minecraft: Java Edition 26.3 in Rust. Vanilla is
@@ -173,7 +220,11 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">THE WORLD IS STILL YOURS</p>
-              <h2 id="worlds-title">Lose yourself.<br />Find something new.</h2>
+              <h2 id="worlds-title">
+                A familiar world.<br /><span class="gradient-text"
+                  >Another perspective.</span
+                >
+              </h2>
             </div>
             <div
               class="world-tabs"
@@ -205,6 +256,13 @@
             </div>
           </div>
           <figure class="gallery">
+            <button
+              type="button"
+              class="gallery-expand"
+              aria-label="Expand game screenshot"
+            >
+              FULL VIEW <span aria-hidden="true">⛶</span>
+            </button>
             <img
               id="world-image"
               src="/assets/shots/sunset.webp"
@@ -272,6 +330,57 @@
               </p>
               <a class="text-link" href="/docs/server.html">Host a server</a>
             </article>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap architecture-section" id="inside">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">LOOK UNDER THE SURFACE</p>
+            <h2>Different layers.<br />One obsession.</h2>
+          </div>
+          <p class="section-lead">
+            The details make the world. Explore the native stack that brings it
+            together.
+          </p>
+        </div>
+        <div class="architecture">
+          <div class="architecture-visual" aria-hidden="true">
+            <div class="architecture-grid"></div>
+            <div class="stack-layer layer-client">
+              <span>CURSE</span><small>PLAY</small>
+            </div>
+            <div class="stack-layer layer-platform">
+              <span>RUST</span><small>BUILD</small>
+            </div>
+            <div class="stack-layer layer-engine">
+              <span>WGPU</span><small>RENDER</small>
+            </div>
+          </div>
+          <div class="architecture-copy">
+            <div
+              class="architecture-tabs"
+              role="group"
+              aria-label="Explore the native stack"
+            >
+              <button type="button" data-layer="engine" aria-pressed="true">
+                Engine</button
+              ><button type="button" data-layer="renderer" aria-pressed="false">
+                Renderer</button
+              ><button type="button" data-layer="launcher" aria-pressed="false">
+                Launcher
+              </button>
+            </div>
+            <p class="eyebrow" id="layer-label">NATIVE RUST</p>
+            <h3 id="layer-title">A different kind<br />of foundation.</h3>
+            <p id="layer-description">
+              World generation, simulation and networking, reimplemented in
+              Rust. Vanilla behavior is the specification, with differential
+              harnesses comparing both games on matching inputs.
+            </p>
+            <a class="text-link" id="layer-link" href="/docs.html"
+              >Explore the documentation</a
+            >
           </div>
         </div>
       </section>
@@ -360,6 +469,9 @@
             </ul>
           </div>
         </div>
+        <div class="footer-wordmark" aria-hidden="true">
+          CURSE<span>✳</span>
+        </div>
         <div class="footer-bottom">
           <p>
             Independent project. Not affiliated with Mojang Studios or
@@ -370,5 +482,63 @@
         </div>
       </div>
     </footer>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <button
+      class="motion-control"
+      type="button"
+      aria-pressed="false"
+      aria-label="Pause decorative animations"
+    >
+      <span aria-hidden="true">Ⅱ</span
+      ><span class="motion-label">Pause motion</span>
+    </button>
+    <dialog class="command-dialog" aria-labelledby="command-title">
+      <div class="dialog-top">
+        <h2 id="command-title">Where to?</h2>
+        <button
+          type="button"
+          class="dialog-close"
+          data-close-dialog
+          aria-label="Close quick navigation"
+        >
+          ×
+        </button>
+      </div>
+      <label class="command-label" for="command-search"
+        >Find your next step</label
+      ><input
+        id="command-search"
+        type="search"
+        placeholder="Worlds, downloads, mods…"
+        autocomplete="off"
+      />
+      <nav class="command-links" aria-label="Quick navigation">
+        <a href="/download.html">Download Curse <span>Windows + Linux</span></a
+        ><a href="/#engine">Explore the engine <span>Native Rust</span></a
+        ><a href="/#worlds-title"
+          >See the worlds <span>In-game captures</span></a
+        ><a href="/mods.html">Make it yours <span>Mods</span></a
+        ><a href="/docs.html">Read the docs <span>Get started</span></a
+        ><a href="/docs/server.html"
+          >Host a server <span>Your world, together</span></a
+        >
+      </nav>
+      <p class="command-empty" hidden>
+        No matching pages. Try “mods” or “download”.
+      </p>
+      <p class="command-help mono">ESC TO CLOSE · CTRL / ⌘ K TO OPEN</p>
+    </dialog>
+    <dialog class="image-dialog" aria-label="Game screenshot">
+      <button
+        type="button"
+        class="dialog-close"
+        data-close-dialog
+        aria-label="Close screenshot"
+      >
+        ×</button
+      ><img alt="" />
+      <p class="mono">IN-GAME CAPTURE / CURSE</p>
+    </dialog>
+    <script src="/assets/voxel.js?v=20261123b" defer></script>
   </body>
 </html>
