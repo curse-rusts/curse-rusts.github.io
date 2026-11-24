@@ -27,6 +27,7 @@ const motionButton = document.querySelector(".motion-control");
 function setMotion(paused) {
   motionPaused = paused;
   document.body.classList.toggle("motion-paused", paused);
+  document.documentElement.style.setProperty("--hero-shift", "0px");
   if (motionButton) {
     motionButton.setAttribute("aria-pressed", String(paused));
     motionButton.setAttribute(
@@ -49,6 +50,7 @@ setMotion(motionPaused);
 motionButton?.addEventListener("click", () => setMotion(!motionPaused));
 
 let sceneRequest = 0;
+let displayedScene = "overworld";
 document.querySelectorAll("[data-world]").forEach((button) => {
   button.addEventListener("click", async () => {
     const scene = scenes[button.dataset.world];
@@ -56,6 +58,14 @@ document.querySelectorAll("[data-world]").forEach((button) => {
     const request = ++sceneRequest;
     const gallery = document.querySelector(".gallery");
     const image = document.getElementById("world-image");
+    const message = gallery.querySelector(".gallery-message");
+    document
+      .querySelectorAll("[data-world]")
+      .forEach((tab) =>
+        tab.setAttribute("aria-pressed", String(tab === button)),
+      );
+    gallery.setAttribute("aria-busy", "true");
+    message.hidden = true;
     gallery.classList.add("is-changing");
     const preload = new Image();
     preload.src = `/assets/shots/${scene.image}.webp`;
@@ -69,6 +79,7 @@ document.querySelectorAll("[data-world]").forEach((button) => {
       if (request !== sceneRequest) return;
       image.src = preload.src;
       image.alt = scene.alt;
+      displayedScene = button.dataset.world;
       document.getElementById("world-kicker").textContent = scene.title;
       document
         .getElementById("world-caption")
@@ -84,7 +95,18 @@ document.querySelectorAll("[data-world]").forEach((button) => {
         );
     } catch {
       if (request !== sceneRequest) return;
+      document
+        .querySelectorAll("[data-world]")
+        .forEach((tab) =>
+          tab.setAttribute(
+            "aria-pressed",
+            String(tab.dataset.world === displayedScene),
+          ),
+        );
+      message.textContent = "That view couldn't load. Please try again.";
+      message.hidden = false;
     }
+    gallery.setAttribute("aria-busy", "false");
     gallery.classList.remove("is-changing");
   });
 });
@@ -94,7 +116,10 @@ document.querySelectorAll("nav a").forEach((link) => {
     link.setAttribute("aria-current", "page");
 });
 
-if (document.body.classList.contains("home")) {
+if (
+  document.body.classList.contains("home") &&
+  "IntersectionObserver" in window
+) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -118,6 +143,8 @@ if (document.body.classList.contains("home")) {
       revealObserver.observe(element);
     });
   document.body.classList.add("enhanced");
+}
+{
   let scrollPending = false;
   const readProgress = () => {
     scrollPending = false;
@@ -257,6 +284,28 @@ search?.addEventListener("input", () => {
   });
   command.querySelector(".command-empty").hidden = count !== 0;
 });
+search?.addEventListener("keydown", (event) => {
+  const first = command.querySelector(".command-links a:not([hidden])");
+  if (!first) return;
+  if (event.key === "Enter") {
+    event.preventDefault();
+    first.click();
+  } else if (event.key === "ArrowDown") {
+    event.preventDefault();
+    first.focus();
+  }
+});
+command?.addEventListener("keydown", (event) => {
+  if (event.target === search || !["ArrowDown", "ArrowUp"].includes(event.key))
+    return;
+  const links = [...command.querySelectorAll(".command-links a:not([hidden])")];
+  const current = links.indexOf(document.activeElement);
+  if (current < 0) return;
+  event.preventDefault();
+  const next = current + (event.key === "ArrowDown" ? 1 : -1);
+  if (next < 0) search.focus();
+  else links[Math.min(next, links.length - 1)].focus();
+});
 command
   ?.querySelectorAll("a")
   .forEach((link) => link.addEventListener("click", () => command.close()));
@@ -266,6 +315,9 @@ document
     button.addEventListener("click", () => button.closest("dialog").close()),
   );
 document.querySelectorAll("dialog").forEach((dialog) => {
+  dialog.addEventListener("close", () => {
+    dialog.querySelector("img")?.removeAttribute("src");
+  });
   dialog.addEventListener("click", (event) => {
     const rect = dialog.getBoundingClientRect();
     if (
@@ -286,3 +338,76 @@ document.querySelector(".gallery-expand")?.addEventListener("click", () => {
   expanded.alt = image.alt;
   dialog.showModal();
 });
+
+const doc = document.querySelector("main.doc");
+if (doc) {
+  const headings = [...doc.querySelectorAll(":scope > h2")];
+  if (headings.length > 2) {
+    const contents = document.createElement("nav");
+    contents.className = "doc-contents";
+    contents.setAttribute("aria-label", "On this page");
+    const label = document.createElement("span");
+    label.textContent = "On this page";
+    contents.append(label);
+    headings.forEach((heading, index) => {
+      heading.id ||= `section-${
+        heading.textContent
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/-$/g, "") || index
+      }`;
+      const link = document.createElement("a");
+      link.href = `#${heading.id}`;
+      link.textContent = heading.textContent;
+      contents.append(link);
+    });
+    const lead = doc.querySelector(".lead");
+    if (lead) lead.after(contents);
+    else doc.querySelector("h1")?.after(contents);
+    if (location.hash) {
+      try {
+        doc
+          .querySelector(
+            `#${CSS.escape(decodeURIComponent(location.hash.slice(1)))}`,
+          )
+          ?.scrollIntoView();
+      } catch {}
+    }
+  }
+  doc.querySelectorAll("pre").forEach((pre) => {
+    const code = pre.querySelector("code");
+    if (!code) return;
+    const copy = document.createElement("button");
+    copy.type = "button";
+    copy.className = "copy-code";
+    copy.textContent = "Copy";
+    copy.setAttribute("aria-label", "Copy command");
+    copy.setAttribute("aria-live", "polite");
+    let reset;
+    copy.addEventListener("click", async () => {
+      clearTimeout(reset);
+      try {
+        await navigator.clipboard.writeText(code.textContent);
+        copy.textContent = "Copied";
+        copy.setAttribute("aria-label", "Command copied");
+      } catch {
+        const selection = getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        copy.textContent = "Selected";
+        copy.setAttribute(
+          "aria-label",
+          "Command selected. Press Control or Command C to copy",
+        );
+      }
+      reset = setTimeout(() => {
+        copy.textContent = "Copy";
+        copy.setAttribute("aria-label", "Copy command");
+      }, 2000);
+    });
+    pre.append(copy);
+  });
+}

@@ -39,6 +39,7 @@
   let biome = "overworld";
   let cells = new Map();
   let faces = [];
+  const polygons = [];
   let width = 500;
   let height = 600;
   let yaw = -0.65;
@@ -194,6 +195,9 @@
           ]),
           color: `rgb(${rgb.join(",")})`,
           delay: (cell.x + cell.z + 10) * 28 + (cell.y + 4) * 22,
+          points: Array.from({ length: 4 }, () => ({ x: 0, y: 0 })),
+          depth: 0,
+          alpha: 1,
         });
       }
     }
@@ -218,11 +222,6 @@
     const cx = width * 0.51,
       cy = height * 0.52;
     const floating = Math.sin(clock * 0.00075) * 0.18;
-    const project = ([x, y, z]) => ({
-      x: cx + (x * c - z * s) * scale,
-      y: cy + ((x * s + z * c) * 0.46 - (y + floating) * 0.88) * scale,
-      depth: (x * s + z * c) * 0.88 + y * 0.46,
-    });
     const glow = palettes[biome].glow;
     for (const star of stars) {
       const pulse = 0.25 + (Math.sin(clock * 0.001 + star.phase) + 1) * 0.2;
@@ -254,21 +253,24 @@
     ctx.ellipse(0, 0, scale * 6.3, scale * 6.3, 0, 0, Math.PI * 2);
     ctx.stroke();
     ctx.restore();
-    const polygons = [];
+    polygons.length = 0;
     for (const face of faces) {
       const [nx, ny, nz] = face.normal;
       if ((nx * s + nz * c) * 0.88 + ny * 0.46 <= 0) continue;
       const t = Math.max(0, Math.min(1, (assembly - face.delay) / 1250));
       const offset = -Math.pow(1 - t, 3) * 11;
-      const points = face.vertices.map(([x, y, z]) =>
-        project([x, y + offset, z]),
-      );
-      polygons.push({
-        points,
-        color: face.color,
-        alpha: Math.min(1, t * 3),
-        depth: points.reduce((sum, p) => sum + p.depth, 0) / 4,
-      });
+      face.depth = 0;
+      face.alpha = Math.min(1, t * 3);
+      for (let i = 0; i < face.vertices.length; i++) {
+        const [x, y, z] = face.vertices[i];
+        const rotated = x * s + z * c;
+        face.points[i].x = cx + (x * c - z * s) * scale;
+        face.points[i].y =
+          cy + (rotated * 0.46 - (y + offset + floating) * 0.88) * scale;
+        face.depth += rotated * 0.88 + (y + offset) * 0.46;
+      }
+      face.depth /= 4;
+      polygons.push(face);
     }
     polygons.sort((a, b) => a.depth - b.depth);
     for (const face of polygons) {
@@ -302,13 +304,28 @@
   }
   function schedule() {
     lastTime = 0;
-    if (!frameId && !paused && !reduced.matches && visible && !document.hidden)
+    const animate = !paused && !reduced.matches && visible && !document.hidden;
+    if (!animate) {
+      if (frameId) cancelAnimationFrame(frameId);
+      frameId = 0;
+      if (paused || reduced.matches) {
+        assembly = 2800;
+        draw();
+      }
+    } else if (!frameId) {
       frameId = requestAnimationFrame(tick);
-    else if (paused || reduced.matches) {
-      assembly = 2800;
-      draw();
     }
   }
+  canvas.addEventListener("keydown", (event) => {
+    if (event.altKey || event.metaKey || event.ctrlKey) return;
+    if (!["ArrowLeft", "ArrowRight", "Home"].includes(event.key)) return;
+    event.preventDefault();
+    yaw =
+      event.key === "Home"
+        ? -0.65
+        : yaw + (event.key === "ArrowLeft" ? -0.15 : 0.15);
+    draw();
+  });
   canvas.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary) return;
     drag = { x: event.clientX, yaw };
@@ -344,15 +361,18 @@
   });
   document.addEventListener("visibilitychange", schedule);
   reduced.addEventListener("change", schedule);
-  new IntersectionObserver(
-    (entries) => {
-      visible = entries[0].isIntersecting;
-      schedule();
-    },
-    { rootMargin: "100px" },
-  ).observe(canvas);
-  new ResizeObserver(resize).observe(canvas);
+  if ("IntersectionObserver" in window)
+    new IntersectionObserver(
+      (entries) => {
+        visible = entries[0].isIntersecting;
+        schedule();
+      },
+      { rootMargin: "100px" },
+    ).observe(canvas);
+  if ("ResizeObserver" in window) new ResizeObserver(resize).observe(canvas);
+  else addEventListener("resize", resize);
   build();
   resize();
+  document.querySelector(".voxel-fallback")?.setAttribute("hidden", "");
   schedule();
 })();
